@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Andada+Pro&display=swap');
+body{
+    padding: 0;
+    margin: 0;
+    background-color:rgb(255, 255, 255);
+}
+.header{
+    display: flex;
+    justify-content: center;
+    background-color:cadetblue;
+    font-family:'Kanit', Courier, monospace;
+    font-size:30px;
+    width: 100vw;
+
+}
+.about{
+    background-color: #128075;
+    margin: 0;
+    padding: 0;
+    margin-top: -35px;
+    width: 100vw;
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 20px;
+    font-size: 25px;
+}
+.content{
+    font-family:'Roboto Slab', serif;
+    font-size:x-large;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-weight: 550;
+    color: darkslategrey;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+.skills{
+    background-color: #128075;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 25px;
+}
+.skills2{
+display: inline-block;
+    /* width: 50vw; */
+    justify-content: center;
+    /* border: 2px solid gray; */
+    text-align: center;
+    font-family: 'Andada Pro';
+    font-size: 30px;
+    font-weight: 500;
+}
+.html5{
+    display: inline-block;
+    text-align: center;
+    font-family: 'Andada Pro';
+    font-size: 21px;
+    font-weight: 550;
+}
+.css3{
+    display: inline-block;
+    text-align: center;
+    font-family: 'Andada Pro';
+    font-size: 21px;
+    font-weight: 595;    
+}
+.bootstrap{
+    display: inline-block;
+    text-align: center;
+    font-family: 'Andada Pro';
+    font-size: 25px;
+    font-weight: 550;
+}
+.php{
+    display: inline-block;
+    text-align: center;
+    font-family: 'Andada Pro';
+    font-size: 25px;
+    font-weight: 550;
+}
+.wordpress{
+    display: inline-block;
+    text-align: center;
+    font-family: 'Andada Pro';
+    font-size: 25px;
+    font-weight: 550;
+}
+.FinalSkills{
+    display:inline-flex;
+    padding-left: 150px;
+    /* padding-left: 30px; */
+}
+.mysql{
+    /* display: grid; */
+    /* justify-self: center; */
+    /* display: flex; */
+    /* display: inline-block; */
+
+    text-align: center;
+    font-family: 'Andada Pro';
+    font-size: 25px;
+    font-weight: 550;
+}
+
+.git{
+    /* display: inline-block; */
+    text-align: center;
+    font-family: 'Andada Pro', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    margin-left: 40px;
+}
+.final2{
+    /* display: inline-block; */
+    display: flex;
+    justify-content: center;
+}
+.github{
+    text-align: center;
+    font-family: 'Andada Pro', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    margin-left: 40px;
+}
