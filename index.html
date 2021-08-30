@@ -1,224 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Hasnain Makada</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Andada+Pro&display=swap');
-body{
-    padding: 0;
-    margin: 0;
-    background-color:rgb(255, 255, 255);
-}
-.header{
-    display: flex;
-    justify-content: center;
-    background-color:cadetblue;
-    font-family:'Kanit', Courier, monospace;
-    font-size:30px;
-    width:100vw;
-    border: 2px solid black;
-}
-.about{
-    background-color: #128075;
-    margin: 0;
-    padding: 0;
-    margin-top: -35px;
-    width: 100vw;
-    font-family: 'Open Sans', sans-serif;
-    padding-left: 20px;
-    font-size: 25px;
-    border: 3px solid black;
-}
-.content{
-    border: 3px solid grey;
-    font-family:'Roboto Slab', serif;
-    font-size:x-large;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    font-weight: 550;
-    color: darkslategrey;
-    padding-left: 30px;
-    padding-right: 30px;
-
-}
-.skills{
-    border: 2px solid black;
-    background-color: #128075;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    padding-left: 20px;
-    font-family: 'Open Sans' , sans-serif;
-    font-size: 25px;
-}
-.skills2{
-display: inline-block;
-    /* width: 50vw; */
-    justify-content: center;
-    /* border: 2px solid gray; */
-    text-align: center;
-    font-family: 'Andada Pro';
-    font-size: 30px;
-    font-weight: 500;
-}
-.html5{
-    display: inline-block;
-    text-align: center;
-    font-family: 'Andada Pro';
-    font-size: 21px;
-    font-weight: 550;
-}
-.css3{
-    display: inline-block;
-    text-align: center;
-    font-family: 'Andada Pro';
-    font-size: 21px;
-    font-weight: 595;    
-}
-.bootstrap{
-    display: inline-block;
-    text-align: center;
-    font-family: 'Andada Pro';
-    font-size: 25px;
-    font-weight: 550;
-}
-.php{
-    display: inline-block;
-    text-align: center;
-    font-family: 'Andada Pro';
-    font-size: 25px;
-    font-weight: 550;
-}
-.wordpress{
-    display: inline-block;
-    text-align: center;
-    font-family: 'Andada Pro';
-    font-size: 25px;
-    font-weight: 550;
-}
-.FinalSkills{
-    display:inline-flex;
-    padding-left: 150px;
-    /* padding-left: 30px; */
-}
-.mysql{
-    /* display: grid; */
-    /* justify-self: center; */
-    /* display: flex; */
-    /* display: inline-block; */
-
-    text-align: center;
-    font-family: 'Andada Pro';
-    font-size: 25px;
-    font-weight: 550;
-}
-
-.git{
-    /* display: inline-block; */
-    text-align: center;
-    font-family: 'Andada Pro', sans-serif;
-    font-size: 25px;
-    font-weight: 500;
-    margin-left: 40px;
-}
-.final2{
-    /* display: inline-block; */
-    display: flex;
-    justify-content: center;
-}
-.github{
-    text-align: center;
-    font-family: 'Andada Pro', sans-serif;
-    font-size: 25px;
-    font-weight: 500;
-    margin-left: 40px;
-}
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+        .container2{
+            text-align: center;
+            font-size:x-large;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+        }
     </style>
-
-</head>
-<body>
-   <div class="header">
-        <h1>Hey there &#128075 I'm Hasnain Makada</h1>
-   </div>
-   <div class="about">
-        <h1>About</h1>
-   </div>
-   <div class="content">
-       <p>
-        I am a 19 year old Computer Engineering Student interested in Java. I like to work on open source projects and i like to contribute to open source too.        
-        <br>
-        <br>
-        Looking for an opportunity to work open source projects combining my skills in Software Engineering, which provides professional development and personal growth.
-       </p>
-   </div>
-   <div class="skills">
-       <h1>Skills</h1>
-   </div>
-   <div class="FinalSkills"></div>
-   <div class="skills2">
-       <img src="java2.png" alt="Java logo" width="150px">
-        <div class="name">
-          <p>Java</p>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Know More...</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="Skills.html">SKILLS</a>
+                  <!-- <img src="light-bulb.svg" alt=""> -->
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+            </div>
+          </div>
         </div>
-   </div>
-   <div class="html5">
-       <img src="html5.jpg" alt="Html Logo" width="150px">
-       <div class="name3">
-           <p>HTML5</p>
-       </div>
-   </div>
-   <div class="css3">
-       <img src="css3.jpg" alt="Css3 Logo" width="150px">
-       <div class="name4">
-           <p>CSS3</p>
-       </div>
-   </div>
-   <div class="bootstrap">
-       <img src="bootstrap.png" alt="Bootstrap Logo" width="150px">
-       <div class="name5">
-           <p>Bootstrap</p>
-       </div>
-   </div>
-   <div class="php">
-       <img src="php.jpg" alt="php logo" width="150px">
-       <div class="name6">
-           <p>PHP</p>
-       </div>
-   </div>
-   <div class="wordpress">
-       <img src="wordpress.png" alt="wordpress Logo" width="150px">
-       <div class="name7">
-           <p>Wordpress</p>
-       </div>
-   </div>
-</div>
-<div class="final2">
-    <div class="mysql">
-        <img src="mysql.jpg" alt="Mysql Logo" width="150px">
-        <div class="name8">
-            <p>MySQL</p>
+      </nav>
+      <br>
+      <br>
+      <br>
+      <div class="container">
+        <center><h2>Hey There &#128075; I am Hasnain Makada</h2></center>
+        <div class="text-center">
+          <img src="Ownimg4.jpg" class="rounded img-thumbnail" alt="image" height="200" style="border: 4px solid grey;">
         </div>
-    </div>
-    <div class="git">
-        <img src="git.png" alt="Git Logo" width="150px">
-        <div class="name9">
-            <p>Git</p>
-        </div>
-    </div>
-    <div class="github">
-        <img src="github.png" alt="Github Logo" width="150px">
-        <div class="name10">    
-            <p>Github</p>
-        </div>
-    </div>
-</div>
-</body>
+        <!-- <img src="Ownimg2.jpeg" class="rounded img-thumbnail" alt="..." > -->
+      </div>
+      <br>
+      <div class="container2">
+        <p>
+            I am an 19 year old studying diploma in computer engineering, Interested to contribute in open source projects and on android development projects also.
+            <br>
+            Looking for an opportunity to work in a challenging position combining my skills in Software Engineering, which provides professional development, interesting experiences and personal growth.
+        </p>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  </body>
 </html>
