@@ -10,7 +10,13 @@
 
     <title>EDUCATION</title>
     <style>
+      .container2{
+        width: 90vw;
+        height: 90vh;
+      }
         .container{
+         /* display: flexbox; */
+         /* justify-content: center; */
             width: auto;
             height: auto;
             border: 3px solid grey;
@@ -18,6 +24,7 @@
             border-radius: 20px;
             float: left;
             margin-left: 10px;
+        /* justify-content:center; */
         }
         .container h3{
             color: darkcyan;
@@ -40,7 +47,8 @@
           </a>
         </div>
       </nav>
-      <div class="container">
+      <div class="container2">
+      <div class="container mx-5 my-5">
         <h3>Darshan University</h3>
         <small style="font-size: medium; color: brown; font-weight: 700;"><center>Rajkot, India</center></small>
         <br>
@@ -54,9 +62,26 @@
             <li>Computer Networks</li>
             <li>C, C++, Java, Php</li>
         </ul>
+      </div> 
+    </div>
+    <footer class="d-flex bg-light flex-wrap justify-content-between align-items-center py-0 my-0 border-top">
+      <div class="col-md-4 d-flex align-items-center">
+        <span class="text-muted mx-3">Copyright &copy; 2020-21</span>
       </div>
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html" style="color:gray">HOME</a>
+          <!-- <img src="light-bulb.svg" alt=""> -->
+        </li>
+        <li class="nav-item bg-light">
+          <a class="nav-link active" aria-current="page" href="Skills.html" style="color:gray">SKILLS</a>
+          <!-- <img src="light-bulb.svg" alt=""> -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Education.html" style="color:rgb(87, 87, 87)">EDUCATION</a>
+        </li>
+      </ul>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-
- 
   </body>
 </html>
