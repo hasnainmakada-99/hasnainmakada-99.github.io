@@ -10,82 +10,80 @@
 
     <title>EDUCATION</title>
     <style>
-      .container2{
-        width: 90vw;
-        height: 90vh;
+      .container{
+        display: flex;
+        justify-content: center;
       }
-        .container{
-         /* display: flexbox; */
-         /* justify-content: center; */
-            width: auto;
-            height: auto;
-            border: 3px solid grey;
-            margin-top: 20px;
-            border-radius: 20px;
-            float: left;
-            margin-left: 10px;
-        /* justify-content:center; */
-        }
-        .container h3{
-            color: darkcyan;
-            text-align: center;
-        }
-        .container ul li{
-            font-weight: 600;
-            /* font-size: ; */
-            /* font-size: x-large; */
-            font-size: 19px;
-        }
+      .container2{
+        width: auto;
+        height: auto;
+        border-radius: 5px;
+      }
+      .container2 ul li{
+        font-weight: 500;
+        font-size: 20px;
+        /* width: auto; */
+        /* height: auto; */
+      }
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="School.svg" alt="" width="40" height="30" class="d-inline-block align-text-top">
-            EDUCATION
-          </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Skills.html">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="project.html">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Education.html">Education</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </div>
-      </nav>
-      <div class="container2">
-      <div class="container mx-5 my-5">
-        <h3>Darshan University</h3>
-        <small style="font-size: medium; color: brown; font-weight: 700;"><center>Rajkot, India</center></small>
-        <br>
-        <h5>Diploma In Computer Engineering (2019 - Present)</h5>
-        <br>
-        <big style="font-weight: 600;">Relevant Courseworks:</big>
-        <ul>
-            <li>Data Structures and Algorithms</li>
-            <li>Database Management Systems</li>
-            <li>Operating Systems</li>
-            <li>Computer Networks</li>
-            <li>C, C++, Java, Php</li>
-        </ul>
-      </div> 
-    </div>
-    <footer class="d-flex bg-light flex-wrap justify-content-between align-items-center py-0 my-0 border-top">
-      <div class="col-md-4 d-flex align-items-center">
-        <span class="text-muted mx-3">Copyright &copy; 2020-21</span>
       </div>
-      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="index.html" style="color:gray">HOME</a>
-          <!-- <img src="light-bulb.svg" alt=""> -->
-        </li>
-        <li class="nav-item bg-light">
-          <a class="nav-link" aria-current="page" href="Skills.html" style="color:gray">SKILLS</a>
-          <!-- <img src="light-bulb.svg" alt=""> -->
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="Education.html" style="color:rgb(87, 87, 87)">EDUCATION</a>
-        </li>
-        <li class="nav-item bg-light">
-          <a class="nav-link" aria-current="page" href="project.html" style="color:gray">PROJECTS</a>
-          <!-- <img src="light-bulb.svg" alt=""> -->
-        </li>
-      </ul>
-    </footer>
+    </nav>
+    <div class="container my-3">
+        <h1>
+          <img src="School.svg" alt="" width="70" height="70">
+          EDUCATION
+        </h1>
+    </div>
+    <hr>
+    <div class="container">
+      <div class="container2 border">
+        <h1 style="color: darkslategray; text-align: center;">
+          Darshan University
+        </h1>
+        <h6 style="text-align: center; color: brown;">Rajkot, India</h6>
+        <br>
+        <p style="font-weight: 500; font-size: 25px;">Diploma In Computer Engineering (2019 - Present)</p>
+        <br>
+        <br>
+        <p style="font-weight: 500; font-size: 19px;">Relevant Courseworks:</p>
+        <ul>
+          <li>Data Structures and Algorithms</li>
+          <li>Database Management Systems</li>
+          <li>Operating Systems</li>
+          <li>Computer Networks</li>
+          <li>C, C++, Java, Php</li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <footer _ngcontent-serverapp-c52="" class="container-fluid bg-dark my-0 py-3 text-light"><p _ngcontent-serverapp-c52="" class="mb-0 text-center">Copyright © 2020-2021</p></footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   </body>
 </html>
