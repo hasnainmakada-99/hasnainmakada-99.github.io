@@ -12,12 +12,17 @@
     <style>
         .container{
             text-align: center;
+            /* display: grid; */
+            /* justify-content: center; */
         }
        .container2{
          border: 2px solid rgb(245, 243, 243);
-         width: 50vw;
+         width: 30vw;
          height: auto;
-         margin-left: 25vw;
+         margin-left: 35vw;
+         /* float:; */
+         /* display: grid; */
+         /* justify-content: center; */
          margin-top: 40px;
          /* box-shadow:inset; */
          box-shadow:10px 10px 20px rgb(218, 215, 215);
@@ -67,43 +72,9 @@
        #mail2:hover{
          text-decoration: underline;
        }
-       #mail{
-         float: right;
-         margin-right: 50px;
-         /* margin-top: 30px; */
-       }
-       @media screen and (min-width: 200px){
-         #mail{
-           margin-bottom: 20px;
-         }
-       }
-       @media  screen and (min-width: 300px) {
-        #mail{
-          /* margin-right: 10px; */
-          margin-left: 35px;
-          /* align-items: center; */
-          /* margin-left: 20vw; */
-        }
-       }
-       @media screen and (min-width: 350px) {
-         #mail{
-           margin-right: 45px;
-         }
-       }
-       @media screen and (min-width: 400px) {
-         #mail{
-           margin-right: 70px;
-         }
-       }
-       @media  screen and (min-width: 450px) {
-         #mail{
-           margin-right: 135px;
-         }
-       }
-       @media screen and (min-width: 750px) {
-         #mail{
-           margin-right: 50px;
-         }
+       .icons{
+         display: grid;
+         justify-content: center;
        }
     </style>
   </head>
@@ -143,17 +114,18 @@
    <hr>
    <div class="container2">
      <br>
-     <li type="none" id="mail"><a id="mail2" target="_blank" href="mailto:hasnainmakada_12@protonmail.com"><img src="mail_icon.png" alt="Mail" width="50"> Mail</a></li>
-     <!-- <br> -->
-    <ul type="none">
+<!-- <br> -->
+    <ul type="none" class="icons">
+      <li type="none" id="mail"><a id="mail2" target="_blank" href="mailto:hasnainmakada_12@protonmail.com"><img src="mail_icon.png" alt="Mail" width="50"> Mail</a></li>
+      <br>
       <li><a id="linked" target="_blank" href="https://www.linkedin.com/in/hasnain-makada-5b47271aa/"><img src="LinkedIn-icon.png" alt="LinkedIn" width="55"> LinkedIn</a></li>
       <br>
       <li><a id="Github" target="_blank" href="https://github.com/hasnainmakada-99"><img src="github_icon2.png" alt=Github"" width="50">   Github </a></li>
       <br>
       <li><a id="Twitter" target="_blank" href="https://twitter.com/Hasnain_Makada" target="_blank"><img src="Twitter_Icon.png" alt="Twitter" width="49"> Twitter </a></li>
       <br>
-      <li><a id="StackOverflow" target="_blank" href="https://stackoverflow.com/users/13632600/hasnain-makada"><img src="stack-overflow_icon.png" alt="Stack Overflow" width="43"> Stack Overflow</a></li>
       <!-- <li id="mail"><a id="mail2" target="_blank" href="mailto:hasnainmakada_12@protonmail.com"><img src="mail_icon.png" alt="Mail" width="50"> Mail</a></li> -->
+    
     </ul>
    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
