@@ -1,0 +1,15 @@
+<div class="container2">
+     <br>
+     <li type="none" id="mail"><a id="mail2" target="_blank" href="mailto:hasnainmakada_12@protonmail.com"><img src="mail_icon.png" alt="Mail" width="50"> Mail</a></li>
+     <!-- <br> -->
+    <ul type="none">
+      <li><a id="linked" target="_blank" href="https://www.linkedin.com/in/hasnain-makada-5b47271aa/"><img src="LinkedIn-icon.png" alt="LinkedIn" width="55"> LinkedIn</a></li>
+      <br>
+      <li><a id="Github" target="_blank" href="https://github.com/hasnainmakada-99"><img src="github_icon2.png" alt=Github"" width="50">   Github </a></li>
+      <br>
+      <li><a id="Twitter" target="_blank" href="https://twitter.com/Hasnain_Makada" target="_blank"><img src="Twitter_Icon.png" alt="Twitter" width="49"> Twitter </a></li>
+      <br>
+      <li><a id="StackOverflow" target="_blank" href="https://stackoverflow.com/users/13632600/hasnain-makada"><img src="stack-overflow_icon.png" alt="Stack Overflow" width="43"> Stack Overflow</a></li>
+      <!-- <li id="mail"><a id="mail2" target="_blank" href="mailto:hasnainmakada_12@protonmail.com"><img src="mail_icon.png" alt="Mail" width="50"> Mail</a></li> -->
+    </ul>
+   </div>
