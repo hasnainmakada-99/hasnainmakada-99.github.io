@@ -31,7 +31,7 @@
     --color-grey-2: #6c7983;
     --color-grey-3: #6c7983;
     --color-grey-4: #98aaba;
-    --color-grey-5: #f8f8f8;
+    --color-grey-5: #EFEFEF;
     --color-grey-6: #12181b;
 }
 
@@ -681,7 +681,43 @@ section{
             justify-content: flex-start;
         }
     }
+
+
+   
 }
+.left-container-contact{
+    // margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    .contacts-icons{
+        .contact-icon{
+            margin: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            i{
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+.right-container-contact{
+
+    display: flex;
+    justify-content: center;
+    .contacts-icons{
+        .contact-icon{
+            margin: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            i{
+                font-size: 2rem;
+            }
+        }
+    }
+}   
 
 .skills{
     display: grid;
@@ -701,24 +737,6 @@ section{
     }
 }
 
-.left-container-contact{
-    display: flex;
-    justify-content: center;
-    margin: 4rem;
-    .contacts-icons{
-        margin: 3rem;
-        display: flex;
-        flex-direction: column;
-        height: inherit;
-        justify-content: center;
-        align-items: center;
-        .contact-icon{
-                i{
-                    font-size: 2rem;
-                }
-        }
-    }
-}
 
 // Independent Components
 .btn-container{
