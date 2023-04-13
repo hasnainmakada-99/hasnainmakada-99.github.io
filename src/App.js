@@ -1,4 +1,5 @@
 import "./App.css";
+import { HashRouter } from "react-router-dom";
 import About from "./components/About";
 import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
@@ -30,15 +31,17 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Navbar />
-      <Home content={data[0]} />
-      <About content={data[1]} />
-      <Skills content={data[3]} />
-      <Works content={data[2]} />
-      <Contact />
-      <Footer />
-    </div>
+    <HashRouter basename="/">
+      <div className="App">
+        <Navbar />
+        <Home content={data[0]} />
+        <About content={data[1]} />
+        <Skills content={data[3]} />
+        <Works content={data[2]} />
+        <Contact />
+        <Footer />
+      </div>
+    </HashRouter>
   );
 }
 
