@@ -18,7 +18,7 @@ const Skills = ({ content }) => {
             Skills
           </p>
           <p className="py-4 text-2xl">
-            I enjoy diving into and learning new things. Here's a list of
+            I enjoy diving into learning new things. Here's a list of
             technologies I've worked with
           </p>
         </div>

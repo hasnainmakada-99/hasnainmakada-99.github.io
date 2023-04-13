@@ -2,7 +2,7 @@ import React from "react";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { Link } from "react-scroll";
 
-import me2 from "../assets/Personal_Image.png";
+import me2 from "../assets/Personal_Image.jpg";
 
 const Home = ({ content }) => {
   return (
@@ -15,7 +15,7 @@ const Home = ({ content }) => {
           <img
             src={me2}
             alt="my profile"
-            className="rounded-2xl object-cover object-center h-60 sm:h-80 md:h-96 max-w-full sm:max-w-80 md:max-w-96"
+            className="rounded-2xl mt-10 flex-shrink-0 mx-auto object-cover object-center h-60 sm:h-80 md:h-96 max-w-full sm:max-w-80 md:max-w-96"
           />
         </div>
         <div className="flex flex-col items-center justify-center text-center md:text-left md:ml-12">

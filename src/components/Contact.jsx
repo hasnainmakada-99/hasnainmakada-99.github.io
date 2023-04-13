@@ -23,8 +23,8 @@ const Contact = () => {
             <a href="https://hasnainmakada-99.showwcase.com" target="_blank">
               <img
                 src={showwcase}
-                width={70}
-                height={70}
+                width={55}
+                height={55}
                 className="rounded-xl"
               />
             </a>
@@ -35,8 +35,8 @@ const Contact = () => {
             <a href="https://twitter.com/Hasnain_Makada" target="_blank">
               <img
                 src={twitter}
-                width={70}
-                height={70}
+                width={55}
+                height={55}
                 className="rounded-xl"
               />
             </a>
@@ -54,8 +54,8 @@ const Contact = () => {
             >
               <img
                 src={linkedin}
-                width={70}
-                height={70}
+                width={55}
+                height={55}
                 className="rounded-none"
               />
             </a>
@@ -64,7 +64,7 @@ const Contact = () => {
           <div class="justify-self-center text-white">
             {" "}
             <a href="https://github.com/hasnainmakada-99" target="_blank">
-              <img src={github} width={70} height={70} className="rounded-xl" />
+              <img src={github} width={55} height={55} className="rounded-xl" />
             </a>
           </div>
         </div>
