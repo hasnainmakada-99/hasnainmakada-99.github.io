@@ -12,6 +12,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-optional
       - name: Deploy app
         run: npm run deploy --no-verify --no-warning-flags
