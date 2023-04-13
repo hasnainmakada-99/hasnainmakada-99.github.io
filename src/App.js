@@ -31,17 +31,15 @@ function App() {
   }, []);
 
   return (
-    <HashRouter basename="/">
-      <div className="App">
-        <Navbar />
-        <Home content={data[0]} />
-        <About content={data[1]} />
-        <Skills content={data[3]} />
-        <Works content={data[2]} />
-        <Contact />
-        <Footer />
-      </div>
-    </HashRouter>
+    <div className="App">
+      <Navbar />
+      <Home content={data[0]} />
+      <About content={data[1]} />
+      <Skills content={data[3]} />
+      <Works content={data[2]} />
+      <Contact />
+      <Footer />
+    </div>
   );
 }
 
