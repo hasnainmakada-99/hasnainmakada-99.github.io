@@ -18,7 +18,7 @@ const About = ({ content }) => {
             <div></div>
           </div>
           <div className="max-w-[1000px] w-full grid grid-cols-1 sm:grid-cols-2 gap-8 px-4">
-            <div className="sm:text-auto text-2xl font-bold">
+            <div className="sm:text-auto text-2xl font-bold flex flex-col justify-center items-center">
               <p>{content?.fields.about_caption}</p>
               <p className="my-4">Tech Geek | DevOps & Flutter</p>
               <p>
@@ -27,7 +27,7 @@ const About = ({ content }) => {
                 <a href="https://showwcase.com/hasnainmakada-99"> Showwcase</a>
               </p>
             </div>
-            <div>
+            <div className="flex flex-col justify-center text-lg items-center">
               <p>{content?.fields.about_details}</p>
             </div>
           </div>
