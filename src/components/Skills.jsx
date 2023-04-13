@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  FaBars,
-  FaTimes,
-  FaGithub,
-  FaLinkedin,
-  FaFacebook,
-  FaLinkedinIn,
-} from "react-icons/fa";
-import { DiHtml5 } from "react-icons/di";
+
 const Skills = ({ content }) => {
   return (
     <div name="skills" className="w-full h-screen bg-[#0a192f] text-gray-300">

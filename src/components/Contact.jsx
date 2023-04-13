@@ -1,5 +1,5 @@
 import React from "react";
-import { DiHtml5 } from "react-icons/di";
+
 import showwcase from "../assets/Showwcase_Icon.png";
 import twitter from "../assets/Twitter_logo.png";
 import linkedin from "../assets/Linked_in_logo.png";
