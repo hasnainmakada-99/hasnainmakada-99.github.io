@@ -8,6 +8,7 @@ import Works from "./components/Works";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import axios from "axios";
+import Blogs from "./components/Blogs";
 import { useState } from "react";
 import { useEffect } from "react";
 function App() {
@@ -37,6 +38,7 @@ function App() {
       <About content={data[1]} />
       <Skills content={data[3]} />
       <Works content={data[2]} />
+      <Blogs />
       <Contact />
       <Footer />
     </div>
