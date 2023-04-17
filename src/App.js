@@ -38,7 +38,7 @@ function App() {
       <About content={data[1]} />
       <Skills content={data[3]} />
       <Works content={data[2]} />
-      <Blogs />
+      <Blogs content={data[4]} />
       <Contact />
       <Footer />
     </div>
