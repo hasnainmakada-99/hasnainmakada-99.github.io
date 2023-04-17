@@ -1,6 +1,5 @@
 {
-    "yaml.schemas": {
-        "file:///c%3A/Users/91972/.vscode/extensions/docsmsft.docs-yaml-1.0.0/dist/toc.schema.json": "/toc\\.yml/i",
-        "https://json.schemastore.org/github-workflow.json": "file:///d%3A/hasnainmakada-99.github.io/.github/workflows/deploy.yaml"
-    }
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///d%3A/hasnainmakada-99.github.io/.github/workflows/deploy.yaml"
+  }
 }
