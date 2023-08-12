@@ -93,6 +93,10 @@ const Navbar = () => {
             Contact
           </Link>
         </li>
+        <li className="py-6 text-4xl">
+          {" "}
+          <a href="https://resume.showwcase.com/hasnainmakada-99.pdf" target="_blank">Resume</a>
+        </li>
       </ul>
       {/* Socila Icons */}
       <div className="hidden lg:flex fixed flex-col top-[35%] left-0">
