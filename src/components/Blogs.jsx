@@ -1,5 +1,6 @@
 import React from "react";
-
+import NewBlog from "./NewBlog";
+import me from '../assets/1600x840.avif';
 const Blogs = ({ content }) => {
   return (
     <div name="blogs" className="w-full md:h-screen text-gray-300 bg-[#0a192f]">
@@ -39,11 +40,17 @@ const Blogs = ({ content }) => {
                 </div>
               </div>
             );
+
+            
           })}
         </div>
       </div>
     </div>
+
+
   );
+
+ 
 };
 
 export default Blogs;

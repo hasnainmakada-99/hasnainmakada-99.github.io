@@ -11,7 +11,7 @@ const Home = ({ content }) => {
       className="min-h-screen w-full bg-[#0a192f] flex justify-center items-center"
     >
       <div className="max-w-screen-lg mx-auto flex flex-col-reverse md:flex-row items-center justify-center px-4">
-        <div className="flex-shrink-0 w-full md:w-auto mb-8 md:mb-0">
+        <div className="flex-shrink-0 w-10 md:w-auto mb-8 md:mb-0">
           <img
             src={me2}
             alt="my profile"
