@@ -39,10 +39,10 @@ function App() {
       <About content={data[1]} />
       <Skills content={data[3]} />
       <Works content={data[2]} />
-      <Blogs content={data[4]} />
+      <NewBlog />
+      {/* <Blogs content={data[4]} /> */}
       <Contact />
       <Footer />
-      <NewBlog />
     </div>
   );
 }
