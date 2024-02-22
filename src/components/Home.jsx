@@ -2,7 +2,7 @@ import React from "react";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { Link } from "react-scroll";
 
-import me2 from "../assets/New_Profile.jpg";
+import me2 from "../assets/New_Image.jpg";
 
 const Home = ({ content }) => {
   return (
