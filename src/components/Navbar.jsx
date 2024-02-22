@@ -95,7 +95,7 @@ const Navbar = () => {
         </li>
         <li className="py-6 text-4xl">
           {" "}
-          <a href="https://resume.showwcase.com/hasnainmakada-99.pdf" target="_blank">Resume</a>
+          <a href="https://resume.showwcase.com/hasnainmakada-99.pdf" target="_blank" rel="noreferrer">Resume</a>
         </li>
       </ul>
       {/* Socila Icons */}

@@ -19,7 +19,7 @@ const Blogs = ({ content }) => {
                 <img
                   src={blog.blog_cover}
                   alt="Blog Cover"
-                  className="w-full md:w-64 h-auto rounded-lg" // Set the width to a medium size (md:w-64)
+                  className="w-full h-auto rounded-lg" // Remove the fixed width (md:w-64)
                 />
                 <div className="p-2 md:px-2 md:py-1 font-mono text-base md:text-lg text-center">
                   {blog.blog_title}

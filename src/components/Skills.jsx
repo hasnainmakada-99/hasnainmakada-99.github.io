@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCode } from "react-icons/fa";
 
 const Skills = ({ content }) => {
   return (
@@ -16,10 +17,12 @@ const Skills = ({ content }) => {
           {content?.fields.skills.map((skill, index) => {
             return (
               <div
-                className="bg-[#152c48] rounded-lg p-2 md:p-4 hover:scale-105 duration-300 transform flex flex-col justify-center items-center h-full"
+                className="bg-blue-900 rounded-lg p-2 md:p-4 transition duration-300 ease-in-out transform hover:scale-105 flex flex-col justify-center items-center h-full cursor-pointer code-container"
                 key={index}
+                onClick={() => window.open(skill.skill_link, "_blank")}
               >
-                <p className="my-1 text-sm sm:text-base md:text-lg lg:text-xl text-gray-200">
+                <FaCode className="text-4xl mb-2 text-cyan-500" />
+                <p className="my-1 text-xs sm:text-sm md:text-base lg:text-lg text-gray-200">
                   {skill.skill_tag}
                 </p>
               </div>
@@ -32,4 +35,3 @@ const Skills = ({ content }) => {
 };
 
 export default Skills;
-
