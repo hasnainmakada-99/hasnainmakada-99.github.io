@@ -11,7 +11,7 @@ import axios from "axios";
 import Blogs from "./components/Blogs";
 import { useState } from "react";
 import { useEffect } from "react";
-import NewBlog from "./components/NewBlog";
+
 function App() {
   const readToken = "9bb8f973821dd64c277667f81147bc867f8d619e";
   const [data, setData] = useState([]);
