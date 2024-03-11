@@ -1,9 +1,4 @@
 import React from "react";
-
-import showwcase from "../assets/Showwcase_Icon.png";
-import twitter from "../assets/Twitter_logo.png";
-import linkedin from "../assets/Linked_in_logo.png";
-import github from "../assets/github_logo.jpeg";
 // const Contact = () => {
 //   return (
 //     <div
@@ -73,7 +68,7 @@ import github from "../assets/github_logo.jpeg";
 //   );
 // };
 
-const Contact = () => {
+const Contact = ({ content }) => {
   return (
     <div
       name="contact"
@@ -85,31 +80,28 @@ const Contact = () => {
             Contact
           </p>
         </div>
-        <div class="grid grid-rows-1 grid-flow-col gap-4">
-          <div class="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-            <img
-              class="block h-14 rounded-full sm:mx-0 sm:shrink-0"
-              src="https://pbs.twimg.com/profile_images/1551832778077274113/LaGTt0TU_400x400.jpg"
-              alt="Woman's Face"
-            />
-            <div class="text-center space-y-2 sm:text-left">
-              <div class="space-y-0.5">
-                <p class="text-lg text-black font-semibold">SHOWWCASE</p>
+        <div class="grid grid-rows-2 grid-flow-col gap-4">
+          {content?.fields.contacts.map((contact, index) => (
+            <a href={contact.contact_url} target="_blank">
+              <div
+                key={index}
+                class="py-8 px-8 transition duration-300  hover:scale-105 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6"
+              >
+                <img
+                  class="block h-14 rounded-full sm:mx-0 sm:shrink-0"
+                  src={contact.contact_logo}
+                  alt="Woman's Face"
+                />
+                <div class="text-center space-y-2 sm:text-left">
+                  <div class="space-y-0.5">
+                    <p class="text-lg text-black font-semibold">
+                      {contact.contact_name}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-            <img
-              class="block  h-14 rounded-full sm:mx-0 sm:shrink-0"
-              src="https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg?size=338&ext=jpg&ga=GA1.1.1700460183.1710028800&semt=ais"
-              alt="Woman's Face"
-            />
-            <div class="text-center space-y-2 sm:text-left">
-              <div class="space-y-0.5">
-                <p class="text-lg text-black font-semibold">TWITTER/X</p>
-              </div>
-            </div>
-          </div>
+            </a>
+          ))}
         </div>
       </div>
     </div>

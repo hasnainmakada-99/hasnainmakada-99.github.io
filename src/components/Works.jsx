@@ -15,7 +15,7 @@ const Works = ({ content }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {content?.fields.work.map((work, index) => (
-            <div className="max-w-sm rounded overflow-hidden bg-white">
+            <div className="max-w-sm transition duration-300  hover:scale-105 rounded overflow-hidden bg-white">
               <a href={work.github_url} target="_blank">
                 <div className="px-6 py-4">
                   <div

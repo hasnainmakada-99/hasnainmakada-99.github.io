@@ -19,7 +19,7 @@ const Blogs = ({ content }) => {
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 bg-[#0a192f]">
           {content?.fields.blog.map((blog, index) => (
             <a href={blog.blog_url} target="_blank" key={index}>
-              <div className="w-full h-full p-4 md:p-6 bg-gray-200 border-2 rounded-lg transition-all hover:shadow-lg mb-4">
+              <div className="w-full duration-300  hover:scale-105 h-full p-4 md:p-6 bg-gray-200 border-2 rounded-lg transition-all hover:shadow-lg mb-4">
                 <img
                   src={blog.blog_cover}
                   alt="Blog Cover"
