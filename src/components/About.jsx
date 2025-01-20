@@ -27,7 +27,7 @@ const About = ({ content }) => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                About Myself
+                Who Am I?
               </h2>
               <p className="text-xl text-gray-300 font-medium">
                 {content?.fields.about_caption || "Pushing the Boundaries of Technology"}

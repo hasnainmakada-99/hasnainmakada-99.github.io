@@ -103,7 +103,7 @@ const Navbar = () => {
           <div className="relative group transform hover:scale-105 transition-transform duration-300">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-300" />
             <div className="relative px-4 py-2 bg-slate-900 rounded-lg ring-1 ring-slate-800/50">
-              <h1 className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent whitespace-nowrap">
+              <h1 className="text-lg sm:text-xl lg:text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent whitespace-nowrap">
                 Hasnain Makada
               </h1>
             </div>

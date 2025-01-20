@@ -31,7 +31,7 @@ const Skills = ({ content }) => {
             Technical Expertise
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Leveraging cutting-edge technologies to build innovative solutions in 2025 and beyond.
+            The Tools and Technologies I've Learnt so far...
           </p>
         </div>
 
