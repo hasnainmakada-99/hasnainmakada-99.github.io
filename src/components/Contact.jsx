@@ -1,110 +1,127 @@
 import React from "react";
-// const Contact = () => {
-//   return (
-//     <div
-//       name="contact"
-//       className="w-full h-screen bg-[#0a192f] flex justify-center items-center p-4"
-//     >
-//       <div className="flex flex-col max-w-[600px] w-full">
-//         <div className="pb-8 flex flex-col justify-center w-full h-full items-center">
-//           <p className="text-4xl font-bold inline border-b-4 border-cyan-500 text-gray-300">
-//             Contact
-//           </p>
-//         </div>
-//         <div class="grid grid-rows-1 grid-flow-col gap-4">
-//           {/* <!-- ... --> */}
-//           <div class="justify-self-center text-white">
-//             {" "}
-//             <a href="https://hasnainmakada-99.showwcase.com" target="_blank">
-//               <img
-//                 src={showwcase}
-//                 width={55}
-//                 height={55}
-//                 className="rounded-xl"
-//               />
-//             </a>
-//           </div>
-
-//           <div class="justify-self-center text-white">
-//             {" "}
-//             <a href="https://twitter.com/Hasnain_Makada" target="_blank">
-//               <img
-//                 src={twitter}
-//                 width={55}
-//                 height={55}
-//                 className="rounded-xl"
-//               />
-//             </a>
-//           </div>
-//         </div>
-//         <br />
-//         <br />
-//         <div class="grid grid-rows-1 grid-flow-col gap-4">
-//           {/* <!-- ... --> */}
-//           <div class="justify-self-center text-white">
-//             {" "}
-//             <a
-//               href="https://www.linkedin.com/in/hasnain-makada-5b47271aa/"
-//               target="_blank"
-//             >
-//               <img
-//                 src={linkedin}
-//                 width={55}
-//                 height={55}
-//                 className="rounded-none"
-//               />
-//             </a>
-//           </div>
-
-//           <div class="justify-self-center text-white">
-//             {" "}
-//             <a href="https://github.com/hasnainmakada-99" target="_blank">
-//               <img src={github} width={55} height={55} className="rounded-xl" />
-//             </a>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
 const Contact = ({ content }) => {
-  return (
-    <div
-      name="contact"
-      className="w-full h-screen bg-[#0a192f] flex justify-center items-center p-4"
+  // Animation variants for staggered card animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
+  // Contact card component with enhanced design
+  const ContactCard = ({ contact }) => (
+    <motion.a
+      href={contact.contact_url}
+      target="_blank"
+      rel="noopener noreferrer"
+      variants={cardVariants}
+      className="group relative flex items-center p-6 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-1"
     >
-      <div className="flex flex-col max-w-[600px] w-full">
-        <div className="pb-8 flex flex-col justify-center w-full h-full items-center">
-          <p className="text-4xl font-bold inline border-b-4 border-cyan-500 text-gray-300">
-            Contact
-          </p>
-        </div>
-        <div class="grid grid-rows-2 grid-flow-col gap-4">
-          {content?.fields.contacts.map((contact, index) => (
-            <a href={contact.contact_url} target="_blank">
-              <div
-                key={index}
-                class="py-8 px-8 transition duration-300  hover:scale-105 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6"
-              >
-                <img
-                  class="block h-14 rounded-full sm:mx-0 sm:shrink-0"
-                  src={contact.contact_logo}
-                  alt="Woman's Face"
-                />
-                <div class="text-center space-y-2 sm:text-left">
-                  <div class="space-y-0.5">
-                    <p class="text-lg text-black font-semibold">
-                      {contact.contact_name}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
+      {/* Background gradient effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
+      {/* Contact logo with animation */}
+      <div className="relative flex-shrink-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-sm group-hover:blur-md transition-all duration-300" />
+        <img
+          src={contact.contact_logo}
+          alt={`${contact.contact_name} logo`}
+          className="relative w-16 h-16 rounded-full object-cover border-2 border-slate-700/50 group-hover:border-blue-500/50 transition-colors duration-300"
+        />
       </div>
-    </div>
+
+      {/* Contact information */}
+      <div className="ml-6 flex-grow">
+        <h3 className="text-xl font-semibold text-gray-200 group-hover:text-blue-400 transition-colors duration-300">
+          {contact.contact_name}
+        </h3>
+        <p className="mt-1 text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+          Click to connect
+        </p>
+      </div>
+
+      {/* Arrow indicator */}
+      <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors duration-300 ml-4" />
+    </motion.a>
+  );
+
+  return (
+    <section
+      id="contact"
+      className="relative min-h-screen flex flex-col justify-center py-20   bg-gradient-to-b from-slate-900 to-slate-950  bg-gradient-to-b from-slate-950 to-slate-900"
+    >
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(34,211,238,0.1),transparent_50%)]" />
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        {/* Section header with animations */}
+        <div className="text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl sm:text-5xl font-bold inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500"
+          >
+            Let's Connect
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mt-4 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto"
+          >
+            Feel free to reach out through any of these platforms. I'm always open to new opportunities and conversations.
+          </motion.p>
+        </div>
+
+        {/* Contact cards grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+        >
+          {content?.fields.contacts.map((contact, index) => (
+            <ContactCard key={index} contact={contact} />
+          ))}
+        </motion.div>
+
+        {/* Additional contact information */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-gray-400">
+            Prefer email? You can also reach me directly at{' '}
+            <a
+              href="mailto:your.email@example.com"
+              className="text-blue-400 hover:text-blue-300 transition-colors duration-300"
+            >
+              your.email@example.com
+            </a>
+          </p>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

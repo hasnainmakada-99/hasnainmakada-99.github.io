@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 
 import About from "./components/About";
 import Navbar from "./components/Navbar";
@@ -39,7 +39,6 @@ function App() {
       <About content={data[1]} />
       <Skills content={data[3]} />
       <Works content={data[2]} />
-      
       <Blogs content={data[4]} />
       <Contact content={data[5]}/>
       <Footer />

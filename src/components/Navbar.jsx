@@ -1,296 +1,157 @@
-// import React, { useState } from "react";
-
-// import { FaBars, FaTimes, FaGithub, FaTwitter } from "react-icons/fa";
-
-// import { HiOutlineMail } from "react-icons/hi";
-// import { BsFillPersonLinesFill } from "react-icons/bs";
-// import { Link } from "react-scroll";
-
-// const Navbar = () => {
-//   const [nav, setNav] = useState(false);
-//   const handleClick = () => setNav(!nav);
-//   return (
-//     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300">
-//       <div>
-//         <h1 className=" font-semibold text-2xl font-monof">Hasnain Makada</h1>
-//       </div>
-//       {/* Menu */}
-//       <ul className="hidden md:flex gap-x-8">
-//         <li>
-//           <Link to="home" smooth={true} duration={500}>
-//             Home
-//           </Link>
-//         </li>
-//         <li>
-//           <Link to="about" smooth={true} duration={500}>
-//             About
-//           </Link>
-//         </li>
-//         <li>
-//           <Link to="skills" smooth={true} duration={500}>
-//             Skills
-//           </Link>
-//         </li>
-//         <li>
-//           <Link to="work" smooth={true} duration={500}>
-//             Projects
-//           </Link>
-//         </li>
-//         <li>
-//           <Link to="blogs" smooth={true} duration={500}>
-//             Blogs
-//           </Link>
-//         </li>
-//         <li>
-//           <Link to="contact" smooth={true} duration={500}>
-//             Contact
-//           </Link>
-//         </li>
-//       </ul>
-//       {/* Hamburgers */}
-//       <div onClick={handleClick} className="md:hidden z-10">
-//         {!nav ? <FaBars /> : <FaTimes />}
-//       </div>
-//       <ul
-//         className={
-//           !nav
-//             ? "hidden"
-//             : "absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center"
-//         }
-//       >
-//         <li className="py-6 text-4xl">
-//           <Link onClick={handleClick} to="home" smooth={true} duration={500}>
-//             Home
-//           </Link>
-//         </li>
-//         <li className="py-6 text-4xl">
-//           {" "}
-//           <Link onClick={handleClick} to="about" smooth={true} duration={500}>
-//             About
-//           </Link>
-//         </li>
-//         <li className="py-6 text-4xl">
-//           {" "}
-//           <Link onClick={handleClick} to="skills" smooth={true} duration={500}>
-//             Skills
-//           </Link>
-//         </li>
-//         <li className="py-6 text-4xl">
-//           {" "}
-//           <Link onClick={handleClick} to="work" smooth={true} duration={500}>
-//             Projects
-//           </Link>
-//         </li>
-//         <li className="py-6 text-4xl">
-//           {" "}
-//           <Link onClick={handleClick} to="blogs" smooth={true} duration={500}>
-//             Blogs
-//           </Link>
-//         </li>
-//         <li className="py-6 text-4xl">
-//           {" "}
-//           <Link onClick={handleClick} to="contact" smooth={true} duration={500}>
-//             Contact
-//           </Link>
-//         </li>
-//         <li className="py-6 text-4xl">
-//           {" "}
-//           <a
-//             href="https://drive.google.com/file/d/1kE6DCi0ixFS1Q7mRmDrTcVCokzuQ8_nw/view?usp=sharing"
-//             target="_blank"
-//             rel="noreferrer"
-//           >
-//             Resume
-//           </a>
-//         </li>
-//       </ul>
-//       {/* Socila Icons */}
-//       <div className="hidden lg:flex fixed flex-col top-[35%] left-0">
-//         <ul>
-//           <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-600">
-//             <a
-//               className="flex justify-between items-center w-full text-gray-300"
-//               href="https://twitter.com/Hasnain_Makada"
-//             >
-//               Twitter <FaTwitter size={30} />
-//             </a>
-//           </li>
-//           <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#333333]">
-//             <a
-//               className="flex justify-between items-center w-full text-gray-300"
-//               href="https://github.com/hasnainmakada-99"
-//             >
-//               Github <FaGithub size={30} />
-//             </a>
-//           </li>
-//           <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#6fc2b0]">
-//             <a
-//               className="flex justify-between items-center w-full text-gray-300"
-//               href="mailto:hasnainmakada@gmail.com"
-//             >
-//               Email <HiOutlineMail size={30} />
-//             </a>
-//           </li>
-//           <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#565f69]">
-//             <a
-//               className="flex justify-between items-center w-full text-gray-300"
-//               href="https://drive.google.com/file/d/1kE6DCi0ixFS1Q7mRmDrTcVCokzuQ8_nw/view?usp=sharing"
-//             >
-//               Resume <BsFillPersonLinesFill size={30} />
-//             </a>
-//           </li>
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
-
-
-
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaGithub, FaTwitter } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { Link } from "react-scroll";
 
 const Navbar = () => {
-  const [nav, setNav] = useState(false);
-  const handleClick = () => setNav(!nav);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [currentSection, setCurrentSection] = useState("home");
+
+  const navigationItems = [
+    { title: "Home", path: "home" },
+    { title: "About", path: "about" },
+    { title: "Skills", path: "skills" },
+    { title: "Projects", path: "works" },
+    { title: "Blogs", path: "blogs" },
+    { title: "Contact", path: "contact" },
+  ];
+
+  const socialLinks = [
+    { href: "https://github.com", icon: <FaGithub size={24} />, label: "GitHub" },
+    { href: "https://twitter.com", icon: <FaTwitter size={24} />, label: "Twitter" },
+    { href: "mailto:example@example.com", icon: <HiOutlineMail size={24} />, label: "Email" },
+    { href: "/resume.pdf", icon: <BsFillPersonLinesFill size={24} />, label: "Resume" },
+  ];
+
+  useEffect(() => {
+    let timeoutId;
+
+    const handleScroll = () => {
+      if (timeoutId) window.cancelAnimationFrame(timeoutId);
+
+      timeoutId = window.requestAnimationFrame(() => {
+        setHasScrolled(window.scrollY > 50);
+        const currentPosition = window.scrollY + 100;
+
+        let detectedSection = "home"; // Default to 'home' if no section is detected
+
+        navigationItems.forEach(({ path }) => {
+          const section = document.getElementById(path);
+          if (section) {
+            const { top, bottom } = section.getBoundingClientRect();
+            if (top <= 100 && bottom >= 100) {
+              detectedSection = path;
+            }
+          }
+        });
+
+        setCurrentSection(detectedSection); // Update to the detected section
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (timeoutId) window.cancelAnimationFrame(timeoutId);
+    };
+  }, [navigationItems]);
+
+  const NavLink = ({ to, children, onClick }) => (
+    <Link
+      to={to}
+      smooth={true}
+      duration={500}
+      offset={-80}
+      onClick={onClick}
+      className={`relative px-4 py-2 text-base font-medium transition-all duration-300 cursor-pointer 
+        hover:scale-105 ${
+          currentSection === to
+            ? "text-blue-400"
+            : "text-gray-300 hover:text-blue-400"
+        }`}
+    >
+      {children}
+      {currentSection === to && (
+        <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transform origin-left transition-transform duration-300" />
+      )}
+    </Link>
+  );
 
   return (
-    <div className="fixed w-full h-[80px] flex justify-between items-center px-6 bg-[#0a192f] text-gray-300 shadow-lg z-50">
-      {/* Logo */}
-      <div className="text-2xl font-bold text-white font-sans cursor-pointer">
-        <h1>Hasnain Makada</h1>
-      </div>
+    <header
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        hasScrolled ? "backdrop-blur-lg bg-slate-900/90" : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <div className="relative group transform hover:scale-105 transition-transform duration-300">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-300" />
+            <div className="relative px-4 py-2 bg-slate-900 rounded-lg ring-1 ring-slate-800/50">
+              <h1 className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent whitespace-nowrap">
+                Hasnain Makada
+              </h1>
+            </div>
+          </div>
 
-      {/* Desktop Menu */}
-      <ul className="hidden md:flex gap-8 text-lg font-medium">
-        <li className="hover:text-cyan-500 transition duration-300">
-          <Link to="home" smooth={true} duration={500}>
-            Home
-          </Link>
-        </li>
-        <li className="hover:text-cyan-500 transition duration-300">
-          <Link to="about" smooth={true} duration={500}>
-            About
-          </Link>
-        </li>
-        <li className="hover:text-cyan-500 transition duration-300">
-          <Link to="skills" smooth={true} duration={500}>
-            Skills
-          </Link>
-        </li>
-        <li className="hover:text-cyan-500 transition duration-300">
-          <Link to="work" smooth={true} duration={500}>
-            Projects
-          </Link>
-        </li>
-        <li className="hover:text-cyan-500 transition duration-300">
-          <Link to="blogs" smooth={true} duration={500}>
-            Blogs
-          </Link>
-        </li>
-        <li className="hover:text-cyan-500 transition duration-300">
-          <Link to="contact" smooth={true} duration={500}>
-            Contact
-          </Link>
-        </li>
-      </ul>
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center justify-center flex-1 mx-8">
+            {navigationItems.map(({ title, path }) => (
+              <NavLink key={path} to={path}>
+                {title}
+              </NavLink>
+            ))}
+          </div>
 
-      {/* Mobile Menu Icon */}
-      <div onClick={handleClick} className="md:hidden z-10 cursor-pointer text-2xl">
-        {!nav ? <FaBars /> : <FaTimes />}
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden relative z-50 p-3 rounded-lg bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-105"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        </nav>
       </div>
 
       {/* Mobile Menu */}
-      <ul
-        className={`${
-          !nav ? "hidden" : "flex"
-        } absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex-col justify-center items-center`}
+      <div
+        className={`fixed inset-0 backdrop-blur-lg bg-slate-900/95 transition-all duration-300 lg:hidden ${
+          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+        }`}
       >
-        <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="home" smooth={true} duration={500}>
-            Home
-          </Link>
-        </li>
-        <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="about" smooth={true} duration={500}>
-            About
-          </Link>
-        </li>
-        <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="skills" smooth={true} duration={500}>
-            Skills
-          </Link>
-        </li>
-        <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="work" smooth={true} duration={500}>
-            Projects
-          </Link>
-        </li>
-        <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="blogs" smooth={true} duration={500}>
-            Blogs
-          </Link>
-        </li>
-        <li className="py-6 text-4xl">
-          <Link onClick={handleClick} to="contact" smooth={true} duration={500}>
-            Contact
-          </Link>
-        </li>
-        <li className="py-6 text-4xl">
-          <a
-            href="https://drive.google.com/file/d/1kE6DCi0ixFS1Q7mRmDrTcVCokzuQ8_nw/view?usp=sharing"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Resume
-          </a>
-        </li>
-      </ul>
+        <div className="flex flex-col items-center justify-center min-h-screen">
+          <nav className="space-y-8 text-center">
+            {navigationItems.map(({ title, path }) => (
+              <div key={path} className="transform hover:scale-105 transition-transform duration-300">
+                <NavLink to={path} onClick={() => setIsMenuOpen(false)}>
+                  <span className="text-2xl sm:text-3xl">{title}</span>
+                </NavLink>
+              </div>
+            ))}
+          </nav>
 
-      {/* Social Icons */}
-      <div className="hidden lg:flex fixed flex-col top-[35%] left-0">
-        <ul>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-cyan-500">
-            <a
-              className="flex justify-between items-center w-full text-gray-300"
-              href="https://twitter.com/Hasnain_Makada"
-            >
-              Twitter <FaTwitter size={30} />
-            </a>
-          </li>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-gray-800">
-            <a
-              className="flex justify-between items-center w-full text-gray-300"
-              href="https://github.com/hasnainmakada-99"
-            >
-              Github <FaGithub size={30} />
-            </a>
-          </li>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-green-500">
-            <a
-              className="flex justify-between items-center w-full text-gray-300"
-              href="mailto:hasnainmakada@gmail.com"
-            >
-              Email <HiOutlineMail size={30} />
-            </a>
-          </li>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-indigo-600">
-            <a
-              className="flex justify-between items-center w-full text-gray-300"
-              href="https://drive.google.com/file/d/1kE6DCi0ixFS1Q7mRmDrTcVCokzuQ8_nw/view?usp=sharing"
-            >
-              Resume <BsFillPersonLinesFill size={30} />
-            </a>
-          </li>
-        </ul>
+          {/* Social Links in Mobile Menu */}
+          <div className="flex space-x-6 mt-12">
+            {socialLinks.map(({ href, icon, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-lg bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-105"
+                aria-label={label}
+              >
+                {icon}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 
