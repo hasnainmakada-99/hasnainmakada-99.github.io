@@ -138,11 +138,11 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-slate-900 transition-all duration-300 lg:hidden ${
-          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+        className={`fixed inset-0 transition-all duration-300 lg:hidden ${
+          isMenuOpen ? "opacity-100 visible bg-slate-900" : "opacity-0 invisible pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-center justify-center min-h-screen">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-slate-900">
           <nav className="space-y-8 text-center">
             {navigationItems.map(({ title, path }) => (
               <div key={path} className="transform hover:scale-105 transition-transform duration-300">
