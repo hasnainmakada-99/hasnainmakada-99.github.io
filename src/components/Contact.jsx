@@ -116,7 +116,7 @@ const Contact = ({ content }) => {
               href="mailto:your.email@example.com"
               className="text-blue-400 hover:text-blue-300 transition-colors duration-300"
             >
-              your.email@example.com
+              Hasnainmakada@gmail.com
             </a>
           </p>
         </motion.div>

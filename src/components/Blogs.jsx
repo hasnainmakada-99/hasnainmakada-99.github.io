@@ -43,7 +43,7 @@ const Blogs = ({ content }) => {
         {/* Section header */}
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Latest Insights
+          Current trends
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Exploring the intersection of technology, innovation, and development
@@ -123,7 +123,8 @@ const Blogs = ({ content }) => {
         {/* View all blogs CTA */}
         <div className="mt-16 text-center">
           <a
-            href="#all-blogs"
+            href="https://hasnainm.hashnode.dev"
+            target="_blank"
             className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-medium shadow-lg shadow-blue-500/25 hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             View All Articles

@@ -43,9 +43,7 @@ const About = ({ content }) => {
 
             {/* Tech Stack Pills */}
             <div className="flex flex-wrap gap-3">
-              <span className="px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400">
-                AI Integration
-              </span>
+              
               <span className="px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400">
                 DevOps
               </span>
@@ -83,19 +81,19 @@ const About = ({ content }) => {
           {/* Right Column - Stats & Achievements */}
           <div className="grid grid-cols-2 gap-6">
             <div className="p-6 bg-slate-800/50 rounded-2xl backdrop-blur-sm">
-              <div className="text-3xl font-bold text-blue-400">5+</div>
+              <div className="text-3xl font-bold text-blue-400">0-1</div>
               <div className="text-gray-400 mt-2">Years of Experience</div>
             </div>
             <div className="p-6 bg-slate-800/50 rounded-2xl backdrop-blur-sm">
-              <div className="text-3xl font-bold text-purple-400">50+</div>
+              <div className="text-3xl font-bold text-purple-400">5+</div>
               <div className="text-gray-400 mt-2">Projects Completed</div>
             </div>
             <div className="p-6 bg-slate-800/50 rounded-2xl backdrop-blur-sm">
-              <div className="text-3xl font-bold text-cyan-400">100+</div>
+              <div className="text-3xl font-bold text-cyan-400">40+</div>
               <div className="text-gray-400 mt-2">Blog Posts</div>
             </div>
             <div className="p-6 bg-slate-800/50 rounded-2xl backdrop-blur-sm">
-              <div className="text-3xl font-bold text-teal-400">1M+</div>
+              <div className="text-3xl font-bold text-teal-400">100k+</div>
               <div className="text-gray-400 mt-2">Lines of Code</div>
             </div>
           </div>
@@ -104,7 +102,7 @@ const About = ({ content }) => {
         {/* CTA Button */}
         <div className="mt-12 text-center">
           <a
-            href="#projects"
+            href="#works"
             className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-medium shadow-lg shadow-blue-500/25 hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             View My Work

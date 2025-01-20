@@ -88,7 +88,7 @@ const Works = ({ content }) => {
             transition={{ duration: 0.5 }}
             className="text-4xl sm:text-5xl font-bold inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500"
           >
-            Projects
+            The Actual Work
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: -10 }}

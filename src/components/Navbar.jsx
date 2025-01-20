@@ -19,10 +19,10 @@ const Navbar = () => {
   ];
 
   const socialLinks = [
-    { href: "https://github.com", icon: <FaGithub size={24} />, label: "GitHub" },
-    { href: "https://twitter.com", icon: <FaTwitter size={24} />, label: "Twitter" },
-    { href: "mailto:example@example.com", icon: <HiOutlineMail size={24} />, label: "Email" },
-    { href: "/resume.pdf", icon: <BsFillPersonLinesFill size={24} />, label: "Resume" },
+    { href: "https://github.com/hasnainmakada-99", icon: <FaGithub size={20} />, label: "GitHub" },
+    { href: "https://x.com/Hasnain_Makada", icon: <FaTwitter size={20} />, label: "Twitter" },
+    { href: "mailto:hasnainmakada@gmail.com", icon: <HiOutlineMail size={20} />, label: "Email" },
+    { href: "https://drive.google.com/file/d/1A-wfXwMC18ybQIDENtBDNc4jCAq8QkDV/view?usp=sharing", icon: <BsFillPersonLinesFill size={20} />, label: "Resume" },
   ];
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Navbar = () => {
         setHasScrolled(window.scrollY > 50);
         const currentPosition = window.scrollY + 100;
 
-        let detectedSection = "home"; // Default to 'home' if no section is detected
+        let detectedSection = "home";
 
         navigationItems.forEach(({ path }) => {
           const section = document.getElementById(path);
@@ -47,7 +47,7 @@ const Navbar = () => {
           }
         });
 
-        setCurrentSection(detectedSection); // Update to the detected section
+        setCurrentSection(detectedSection);
       });
     };
 
@@ -79,6 +79,18 @@ const Navbar = () => {
     </Link>
   );
 
+  const SocialLink = ({ href, icon, label }) => (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="p-2 rounded-lg bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-105"
+      aria-label={label}
+    >
+      {icon}
+    </a>
+  );
+
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -103,6 +115,13 @@ const Navbar = () => {
               <NavLink key={path} to={path}>
                 {title}
               </NavLink>
+            ))}
+          </div>
+
+          {/* Desktop Social Links */}
+          <div className="hidden lg:flex items-center space-x-3">
+            {socialLinks.map((link) => (
+              <SocialLink key={link.label} {...link} />
             ))}
           </div>
 
@@ -135,18 +154,9 @@ const Navbar = () => {
           </nav>
 
           {/* Social Links in Mobile Menu */}
-          <div className="flex space-x-6 mt-12">
-            {socialLinks.map(({ href, icon, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-lg bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-105"
-                aria-label={label}
-              >
-                {icon}
-              </a>
+          <div className="flex flex-wrap justify-center gap-4 mt-12 px-4">
+            {socialLinks.map((link) => (
+              <SocialLink key={link.label} {...link} />
             ))}
           </div>
         </div>
