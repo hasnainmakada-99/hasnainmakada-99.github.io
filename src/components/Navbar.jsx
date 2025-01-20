@@ -138,7 +138,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 backdrop-blur-lg bg-slate-900/95 transition-all duration-300 lg:hidden ${
+        className={`fixed inset-0 bg-slate-900 transition-all duration-300 lg:hidden ${
           isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
       >
