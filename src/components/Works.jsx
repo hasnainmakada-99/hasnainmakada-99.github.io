@@ -9,9 +9,9 @@ const Works = ({ content }) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const cardVariants = {
@@ -20,9 +20,9 @@ const Works = ({ content }) => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5
-      }
-    }
+        duration: 0.5,
+      },
+    },
   };
 
   // Custom card component for better organization
@@ -40,7 +40,7 @@ const Works = ({ content }) => {
           </h3>
           {/* Project number indicator */}
           <div className="absolute top-4 right-4 text-sm font-mono text-slate-500">
-            {String(index + 1).padStart(2, '0')}
+            {String(index + 1).padStart(2, "0")}
           </div>
         </div>
       </div>
@@ -48,6 +48,7 @@ const Works = ({ content }) => {
       {/* Project Description */}
       <div className="flex-grow p-6 pt-0">
         <p className="text-white text-sm sm:text-base leading-relaxed">
+          <br />
           {work.work_description}
         </p>
       </div>
@@ -63,9 +64,6 @@ const Works = ({ content }) => {
           <Github className="w-5 h-5" />
           <span>View Code</span>
         </a>
-        
-        
-        
       </div>
 
       {/* Interactive Hover Effects */}
@@ -74,7 +72,10 @@ const Works = ({ content }) => {
   );
 
   return (
-    <section id="works" className="relative min-h-screen w-full text-gray-300 py-20 bg-gradient-to-b from-slate-950 to-slate-900 text-gray-100 py-24 px-4  bg-gradient-to-b from-slate-900 to-slate-950 ">
+    <section
+      id="works"
+      className="relative min-h-screen w-full text-gray-300 py-20 bg-gradient-to-b from-slate-950 to-slate-900 text-gray-100 py-24 px-4  bg-gradient-to-b from-slate-900 to-slate-950 "
+    >
       {/* Background Gradients */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(34,211,238,0.1),transparent_50%)]" />
@@ -96,7 +97,8 @@ const Works = ({ content }) => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto"
           >
-            A showcase of my recent work and side projects exploring various technologies and solutions.
+            A showcase of my recent work and side projects exploring various
+            technologies and solutions.
           </motion.p>
         </div>
 
