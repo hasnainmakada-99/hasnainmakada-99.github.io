@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Skills = ({ content }) => {
+  const { isDark } = useTheme();
+  
   // Default skills array in case content is not provided
   const defaultSkills = [
     { skill_tag: "React" },
@@ -16,7 +19,11 @@ const Skills = ({ content }) => {
   return (
     <div
       id="skills"
-      className="relative min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 py-24 px-4 bg-gradient-to-b from-slate-950 to-slate-900 "
+      className={`relative min-h-screen py-24 px-4 ${
+        isDark 
+          ? 'bg-gradient-to-b from-slate-900 to-slate-950' 
+          : 'bg-gradient-to-b from-white to-gray-50'
+      }`}
     >
       {/* Background Design Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -30,7 +37,7 @@ const Skills = ({ content }) => {
           <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             Technical Expertise
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className={`text-xl max-w-3xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             The Tools and Technologies I've Learnt so far...
           </p>
         </div>
@@ -46,9 +53,13 @@ const Skills = ({ content }) => {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl blur-sm opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
               
               {/* Skill card with glass morphism effect */}
-              <div className="relative h-full bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 
+              <div className={`relative h-full backdrop-blur-sm border rounded-xl p-6 
                 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg 
-                flex flex-col items-center justify-center gap-3">
+                flex flex-col items-center justify-center gap-3 ${
+                  isDark 
+                    ? 'bg-slate-800/50 border-slate-700/50' 
+                    : 'bg-white/50 border-gray-300/50'
+                }`}>
                 
                 {/* Skill icon using first letter */}
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 
@@ -59,7 +70,9 @@ const Skills = ({ content }) => {
                 </div>
 
                 {/* Skill name with hover effect */}
-                <span className="text-gray-200 font-medium text-center group-hover:text-blue-400 transition-colors duration-300">
+                <span className={`font-medium text-center group-hover:text-blue-400 transition-colors duration-300 ${
+                  isDark ? 'text-gray-200' : 'text-gray-800'
+                }`}>
                   {skill.skill_tag}
                 </span>
               </div>

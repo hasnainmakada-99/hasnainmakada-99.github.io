@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
 import { Send, User, Mail, MessageSquare, Loader2 } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const ContactForm = () => {
+  const { isDark } = useTheme();
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -94,8 +96,8 @@ const ContactForm = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-8"
       >
-        <h3 className="text-2xl font-bold text-gray-200 mb-2">Send me a message</h3>
-        <p className="text-gray-400">I'd love to hear from you. Send me a message and I'll respond as soon as possible.</p>
+        <h3 className={`text-2xl font-bold mb-2 ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>Send me a message</h3>
+        <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>I'd love to hear from you. Send me a message and I'll respond as soon as possible.</p>
       </motion.div>
 
       {/* Contact Form */}
@@ -111,7 +113,7 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Name Input */}
           <motion.div variants={inputVariants} whileFocus="focus" className="relative">
-            <label htmlFor="from_name" className="block text-sm font-medium text-gray-300 mb-2">
+            <label htmlFor="from_name" className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
               <User className="inline w-4 h-4 mr-2" />
               Your Name
             </label>
@@ -122,14 +124,18 @@ const ContactForm = () => {
               value={formData.from_name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-300"
+              className={`w-full px-4 py-3 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-300 ${
+                isDark 
+                  ? 'bg-slate-800/50 border-slate-700/50 text-gray-200 placeholder-gray-500' 
+                  : 'bg-white/50 border-gray-300/50 text-gray-800 placeholder-gray-400'
+              }`}
               placeholder="Enter your full name"
             />
           </motion.div>
 
           {/* Email Input */}
           <motion.div variants={inputVariants} whileFocus="focus" className="relative">
-            <label htmlFor="from_email" className="block text-sm font-medium text-gray-300 mb-2">
+            <label htmlFor="from_email" className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
               <Mail className="inline w-4 h-4 mr-2" />
               Your Email
             </label>
@@ -140,7 +146,11 @@ const ContactForm = () => {
               value={formData.from_email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-300"
+              className={`w-full px-4 py-3 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-300 ${
+                isDark 
+                  ? 'bg-slate-800/50 border-slate-700/50 text-gray-200 placeholder-gray-500' 
+                  : 'bg-white/50 border-gray-300/50 text-gray-800 placeholder-gray-400'
+              }`}
               placeholder="Enter your email address"
             />
           </motion.div>
@@ -148,7 +158,7 @@ const ContactForm = () => {
 
         {/* Subject Input */}
         <motion.div variants={inputVariants} whileFocus="focus" className="relative">
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="subject" className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
             <MessageSquare className="inline w-4 h-4 mr-2" />
             Subject
           </label>
@@ -159,14 +169,18 @@ const ContactForm = () => {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-300"
+            className={`w-full px-4 py-3 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-300 ${
+              isDark 
+                ? 'bg-slate-800/50 border-slate-700/50 text-gray-200 placeholder-gray-500' 
+                : 'bg-white/50 border-gray-300/50 text-gray-800 placeholder-gray-400'
+            }`}
             placeholder="What's this about?"
           />
         </motion.div>
 
         {/* Message Textarea */}
         <motion.div variants={inputVariants} whileFocus="focus" className="relative">
-          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="message" className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
             <MessageSquare className="inline w-4 h-4 mr-2" />
             Message
           </label>
@@ -177,7 +191,11 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-4 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-300 resize-none"
+            className={`w-full px-4 py-3 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-300 resize-none ${
+              isDark 
+                ? 'bg-slate-800/50 border-slate-700/50 text-gray-200 placeholder-gray-500' 
+                : 'bg-white/50 border-gray-300/50 text-gray-800 placeholder-gray-400'
+            }`}
             placeholder="Tell me about your project, ideas, or just say hello..."
           />
         </motion.div>

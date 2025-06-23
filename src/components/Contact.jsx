@@ -2,8 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import ContactForm from "./ContactForm";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Contact = ({ content }) => {
+  const { isDark } = useTheme();
   // Animation variants for staggered card animations
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,7 +35,11 @@ const Contact = ({ content }) => {
       target="_blank"
       rel="noopener noreferrer"
       variants={cardVariants}
-      className="group relative flex items-center p-6 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-1"
+      className={`group relative flex items-center p-6 backdrop-blur-sm rounded-xl border hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-1 ${
+        isDark 
+          ? 'bg-slate-800/50 border-slate-700/50' 
+          : 'bg-white/50 border-gray-300/50'
+      }`}
     >
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -44,16 +50,22 @@ const Contact = ({ content }) => {
         <img
           src={contact.contact_logo}
           alt={`${contact.contact_name} logo`}
-          className="relative w-16 h-16 rounded-full object-cover border-2 border-slate-700/50 group-hover:border-blue-500/50 transition-colors duration-300"
+          className={`relative w-16 h-16 rounded-full object-cover border-2 group-hover:border-blue-500/50 transition-colors duration-300 ${
+            isDark ? 'border-slate-700/50' : 'border-gray-300/50'
+          }`}
         />
       </div>
 
       {/* Contact information */}
       <div className="ml-6 flex-grow">
-        <h3 className="text-xl font-semibold text-gray-200 group-hover:text-blue-400 transition-colors duration-300">
+        <h3 className={`text-xl font-semibold group-hover:text-blue-400 transition-colors duration-300 ${
+          isDark ? 'text-gray-200' : 'text-gray-800'
+        }`}>
           {contact.contact_name}
         </h3>
-        <p className="mt-1 text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+        <p className={`mt-1 text-sm transition-colors duration-300 ${
+          isDark ? 'text-gray-400 group-hover:text-gray-300' : 'text-gray-600 group-hover:text-gray-500'
+        }`}>
           Click to connect
         </p>
       </div>
@@ -66,7 +78,11 @@ const Contact = ({ content }) => {
   return (
     <section
       id="contact"
-      className="relative min-h-screen flex flex-col justify-center py-20   bg-gradient-to-b from-slate-900 to-slate-950  bg-gradient-to-b from-slate-950 to-slate-900"
+      className={`relative min-h-screen flex flex-col justify-center py-20 ${
+        isDark 
+          ? 'bg-gradient-to-b from-slate-900 to-slate-950' 
+          : 'bg-gradient-to-b from-gray-50 to-white'
+      }`}
     >
       {/* Background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)]" />
@@ -86,7 +102,9 @@ const Contact = ({ content }) => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-4 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto"
+            className={`mt-4 text-lg sm:text-xl max-w-2xl mx-auto ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}
           >
             Feel free to reach out through any of these platforms. I'm always open to new opportunities and conversations.
           </motion.p>

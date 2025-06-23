@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from '../contexts/ThemeContext';
 
 const About = ({ content }) => {
+  const { isDark } = useTheme();
+  
   // Animation variants for scroll-triggered animations
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -11,7 +14,11 @@ const About = ({ content }) => {
   return (
     <div 
       id="about" 
-      className="relative min-h-screen bg-gradient-to-b from-slate-950 to-slate-900 text-gray-100 py-24 px-4  bg-gradient-to-b from-slate-900 to-slate-950"
+      className={`relative min-h-screen py-24 px-4 ${
+        isDark 
+          ? 'bg-gradient-to-b from-slate-950 to-slate-900 text-gray-100' 
+          : 'bg-gradient-to-b from-gray-50 to-white text-gray-900'
+      }`}
     >
       {/* Background Design Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -29,13 +36,13 @@ const About = ({ content }) => {
               <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                 Who Am I?
               </h2>
-              <p className="text-xl text-gray-300 font-medium">
+              <p className={`text-xl font-medium ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                 {content?.fields.about_caption || "Pushing the Boundaries of Technology"}
               </p>
             </div>
 
             <div className="prose prose-lg prose-invert">
-              <p className="text-gray-300 leading-relaxed">
+              <p className={`leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 {content?.fields.about_details ||
                   "As a forward-thinking technologist in 2025, I specialize in creating seamless digital experiences using cutting-edge tools and frameworks. My expertise spans across AI-enhanced development, quantum-ready applications, and sustainable tech solutions."}
               </p>

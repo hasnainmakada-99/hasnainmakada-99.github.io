@@ -7,6 +7,8 @@ import Skills from "./components/Skills";
 import Works from "./components/Works";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
+import ThemeToggle from "./components/ThemeToggle";
+import { ThemeProvider } from "./contexts/ThemeContext";
 import axios from "axios";
 import Blogs from "./components/Blogs";
 import { useState } from "react";
@@ -33,16 +35,19 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Navbar />
-      <Home content={data[0]} />
-      <About content={data[1]} />
-      <Skills content={data[3]} />
-      <Works content={data[2]} />
-      <Blogs content={data[4]} />
-      <Contact content={data[5]}/>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="App theme-bg-primary theme-text-primary">
+        <ThemeToggle />
+        <Navbar />
+        <Home content={data[0]} />
+        <About content={data[1]} />
+        <Skills content={data[3]} />
+        <Works content={data[2]} />
+        <Blogs content={data[4]} />
+        <Contact content={data[5]}/>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

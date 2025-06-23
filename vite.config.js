@@ -21,13 +21,14 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 12000,
     allowedHosts: true,
+    strictPort: true,
     headers: {
       'X-Frame-Options': 'ALLOWALL',
     },
   },
   preview: {
     host: '0.0.0.0',
-    port: 12000,
+    port: 12001,
     allowedHosts: true,
   },
   build: {

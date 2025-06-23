@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { Link } from 'react-scroll';
+import { useTheme } from '../contexts/ThemeContext';
 import OptimizedImage from './OptimizedImage';
 import profileWebp from '../assets/optimized/Portfolio_Image_large.webp';
 import profileJpg from '../assets/optimized/Portfolio_Image_large.jpg';
 const Home = ({ content }) => {
+  const { isDark } = useTheme();
+  
   // Animation states
   const [loaded, setLoaded] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -33,16 +36,24 @@ const Home = ({ content }) => {
   return (
     <div
       name="home"
-      className="relative min-h-screen w-full bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950  overflow-hidden  bg-gradient-to-b from-slate-950 to-slate-900 bg-gradient-to-b from-slate-950 to-slate-900 text-gray-100 py-24 px-4  bg-gradient-to-b from-slate-900 to-slate-950"
+      className={`relative min-h-screen w-full overflow-hidden py-24 px-4 transition-all duration-500 ${
+        isDark 
+          ? 'bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-gray-100' 
+          : 'bg-gradient-to-b from-blue-50 via-white to-purple-50 text-gray-900'
+      }`}
     >
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl -top-48 -right-48 animate-pulse" 
+        <div className={`absolute w-[500px] h-[500px] rounded-full blur-3xl -top-48 -right-48 animate-pulse ${
+          isDark ? 'bg-blue-500/10' : 'bg-blue-500/5'
+        }`}
           style={{
             transform: `translate(${mousePosition.x * -1}px, ${mousePosition.y * -1}px)`,
           }}
         />
-        <div className="absolute w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-3xl -bottom-48 -left-48 animate-pulse"
+        <div className={`absolute w-[500px] h-[500px] rounded-full blur-3xl -bottom-48 -left-48 animate-pulse ${
+          isDark ? 'bg-purple-500/10' : 'bg-purple-500/5'
+        }`}
           style={{
             transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
           }}
@@ -66,9 +77,9 @@ const Home = ({ content }) => {
           </h1>
 
           {/* Description with fade animation */}
-          <p className={`text-lg sm:text-xl text-gray-400 max-w-xl transition-all duration-1000 delay-300 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          <p className={`text-lg sm:text-xl max-w-xl transition-all duration-1000 delay-300 ${
+            isDark ? 'text-gray-400' : 'text-gray-600'
+          } ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Crafting responsive and engaging digital solutions through innovative web and mobile development.
           </p>
 
@@ -90,7 +101,11 @@ const Home = ({ content }) => {
             
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-slate-800/50 backdrop-blur-sm rounded-full text-gray-300 font-medium border border-slate-700/50 hover:bg-slate-800 transition-all duration-300"
+              className={`inline-flex items-center gap-2 px-8 py-3 backdrop-blur-sm rounded-full font-medium border transition-all duration-300 ${
+                isDark 
+                  ? 'bg-slate-800/50 text-gray-300 border-slate-700/50 hover:bg-slate-800' 
+                  : 'bg-white/50 text-gray-700 border-gray-300/50 hover:bg-white'
+              }`}
             >
               Get in Touch
             </a>

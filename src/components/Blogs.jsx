@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Blogs = ({ content }) => {
+  const { isDark } = useTheme();
+  
   // State for hover effects and animations
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -30,7 +33,11 @@ const Blogs = ({ content }) => {
   return (
     <div
       id="blogs"
-      className="relative min-h-screen bg-gradient-to-b from-slate-950 to-slate-900 bg-gradient-to-b from-slate-900 to-slate-950 py-24 px-4"
+      className={`relative min-h-screen py-24 px-4 ${
+        isDark 
+          ? 'bg-gradient-to-b from-slate-950 to-slate-900' 
+          : 'bg-gradient-to-b from-gray-50 to-white'
+      }`}
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -45,7 +52,7 @@ const Blogs = ({ content }) => {
           <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
           Current trends
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className={`text-xl max-w-2xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             Exploring the intersection of technology, innovation, and development
           </p>
         </div>
@@ -62,7 +69,11 @@ const Blogs = ({ content }) => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="h-full rounded-2xl overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 transition-all duration-300 hover:scale-102 hover:shadow-2xl hover:shadow-blue-500/10">
+              <div className={`h-full rounded-2xl overflow-hidden backdrop-blur-sm border transition-all duration-300 hover:scale-102 hover:shadow-2xl hover:shadow-blue-500/10 ${
+                isDark 
+                  ? 'bg-slate-800/50 border-slate-700/50' 
+                  : 'bg-white/50 border-gray-300/50'
+              }`}>
                 {/* Image container */}
                 <div className="relative overflow-hidden aspect-video">
                   <img
@@ -77,7 +88,7 @@ const Blogs = ({ content }) => {
                 {/* Content container */}
                 <div className="p-6 space-y-4">
                   {/* Meta information */}
-                  <div className="flex items-center gap-4 text-sm text-gray-400">
+                  <div className={`flex items-center gap-4 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                     <span className="flex items-center gap-1">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -93,12 +104,14 @@ const Blogs = ({ content }) => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-semibold text-gray-100 group-hover:text-blue-400 transition-colors duration-300">
+                  <h3 className={`text-xl font-semibold group-hover:text-blue-400 transition-colors duration-300 ${
+                    isDark ? 'text-gray-100' : 'text-gray-900'
+                  }`}>
                     {blog.blog_title}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-gray-400 line-clamp-2">
+                  <p className={`line-clamp-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                     {blog.blog_excerpt}
                   </p>
 
