@@ -94,3 +94,71 @@ html {
         hsla(242, 74%, 61%, 0.8)   
     )!important;
 }
+
+/* Enhanced responsive image container */
+.profile-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+  backdrop-filter: blur(8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.profile-image-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+  border-radius: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.profile-image-container:hover::before {
+  opacity: 1;
+}
+
+/* Responsive image sizing for better face visibility */
+@media (max-width: 640px) {
+  .profile-image-responsive {
+    width: 280px !important;
+    height: 360px !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .profile-image-responsive {
+    width: 320px !important;
+    height: 400px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .profile-image-responsive {
+    width: 360px !important;
+    height: 460px !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .profile-image-responsive {
+    width: 320px !important;
+    height: 400px !important;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1536px) {
+  .profile-image-responsive {
+    width: 384px !important;
+    height: 480px !important;
+  }
+}
+
+@media (min-width: 1537px) {
+  .profile-image-responsive {
+    width: 416px !important;
+    height: 520px !important;
+  }
+}
