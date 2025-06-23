@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #0f172a;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .image-container {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px;
+            border: 2px solid #3b82f6;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+        }
+        
+        .test-image {
+            border-radius: 15px;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.3s ease;
+        }
+        
+        .test-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive sizing matching our CSS */
+        @media (max-width: 640px) {
+            .test-image {
+                width: 280px !important;
+                height: 360px !important;
+            }
+        }
+        
+        @media (min-width: 641px) and (max-width: 768px) {
+            .test-image {
+                width: 320px !important;
+                height: 400px !important;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .test-image {
+                width: 360px !important;
+                height: 460px !important;
+            }
+        }
+        
+        @media (min-width: 1025px) and (max-width: 1280px) {
+            .test-image {
+                width: 320px !important;
+                height: 400px !important;
+            }
+        }
+        
+        @media (min-width: 1281px) and (max-width: 1536px) {
+            .test-image {
+                width: 384px !important;
+                height: 480px !important;
+            }
+        }
+        
+        @media (min-width: 1537px) {
+            .test-image {
+                width: 416px !important;
+                height: 520px !important;
+            }
+        }
+        
+        .info {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Profile Image Responsive Test</h1>
+        <p>Resize your browser window to see the image adapt to different screen sizes</p>
+        
+        <div class="image-container">
+            <img src="src/assets/optimized/Portfolio_Image_large.webp" 
+                 alt="Profile Image Test" 
+                 class="test-image"
+                 onerror="this.src='src/assets/optimized/Portfolio_Image_large.jpg'">
+        </div>
+        
+        <div class="info">
+            <h3>Current Breakpoints:</h3>
+            <ul style="text-align: left; display: inline-block;">
+                <li><strong>Mobile (≤640px):</strong> 280x360px</li>
+                <li><strong>Tablet (641-768px):</strong> 320x400px</li>
+                <li><strong>Medium (769-1024px):</strong> 360x460px</li>
+                <li><strong>Large (1025-1280px):</strong> 320x400px</li>
+                <li><strong>XL (1281-1536px):</strong> 384x480px</li>
+                <li><strong>2XL (≥1537px):</strong> 416x520px</li>
+            </ul>
+            <p><strong>Image Quality:</strong> WebP format (418KB) with JPG fallback (467KB)</p>
+            <p><strong>Original Size:</strong> 1200x1600px optimized from 4284x5712px (16MB)</p>
+        </div>
+    </div>
+    
+    <script>
+        // Display current window size
+        function updateWindowSize() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            document.title = `Responsive Test - ${width}x${height}`;
+        }
+        
+        window.addEventListener('resize', updateWindowSize);
+        updateWindowSize();
+    </script>
+</body>
+</html>
