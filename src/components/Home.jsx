@@ -1,9 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { HiArrowNarrowRight } from "react-icons/hi";
-import { Link } from "react-scroll";
-import OptimizedImage from "./OptimizedImage";
-import profileWebp from "../assets/optimized/Portfolio_Image.webp";
-import profileJpg from "../assets/optimized/Portfolio_Image.jpg";
+
 const Home = ({ content }) => {
   // Animation states
   const [loaded, setLoaded] = useState(false);
@@ -54,9 +49,7 @@ const Home = ({ content }) => {
       </div>
 
       {/* Main content container */}
-      <div className="relative container max-w-7xl mx-auto min-h-screen px-4 py-20 flex flex-col-reverse lg:flex-row items-center justify-center gap-12 lg:gap-24">
-        {/* Left content - Text and CTA */}
-        <div className="w-full lg:w-1/2 space-y-8 text-center lg:text-left">
+
           {/* Main heading with rotation animation */}
           <h1
             className={`text-4xl sm:text-6xl xl:text-7xl font-bold transition-all duration-1000 ${
@@ -107,31 +100,24 @@ const Home = ({ content }) => {
         </div>
 
         {/* Right content - Profile Image */}
-        <div className="w-full lg:w-1/2 flex justify-center items-center">
-          <div
-            className={`relative transition-all duration-1000 ${
-              loaded
-                ? "opacity-100 scale-100 rotate-0"
-                : "opacity-0 scale-90 rotate-[-45deg]"
-            }`}
-          >
-            {/* Decorative rings */}
-            <div className="absolute inset-0 rounded-full border-2 border-blue-500/20 animate-ping" />
-            <div className="absolute inset-0 rounded-full border-2 border-purple-500/20 animate-pulse" />
 
-            {/* Profile image container */}
-            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm p-1">
               <OptimizedImage
                 src={content?.fields?.profile_image || profileJpg}
                 webpSrc={profileWebp}
                 alt="Hasnain Makada - Full Stack Developer"
-                className="rounded-2xl w-64 h-64 sm:w-80 sm:h-80 object-cover object-center transform transition-transform duration-500 hover:scale-105"
+                className="profile-image-responsive rounded-2xl object-cover object-top transform transition-all duration-500 hover:scale-105 shadow-xl"
                 style={{
                   transform: `perspective(1000px) rotateX(${
                     mousePosition.y * 0.05
                   }deg) rotateY(${mousePosition.x * 0.05}deg)`,
                 }}
               />
+              
+              {/* Gradient overlay for better contrast and depth */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-slate-900/20 via-transparent to-transparent pointer-events-none" />
+              
+              {/* Enhanced glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
             </div>
           </div>
         </div>
