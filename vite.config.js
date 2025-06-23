@@ -19,7 +19,7 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    port: 12000,
+    port: 3000,
     allowedHosts: true,
     strictPort: true,
     headers: {
@@ -28,7 +28,7 @@ export default defineConfig({
   },
   preview: {
     host: '0.0.0.0',
-    port: 12001,
+    port: 12000,
     allowedHosts: true,
   },
   build: {
