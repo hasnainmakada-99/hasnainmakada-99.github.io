@@ -8,7 +8,7 @@ const ThemeToggle = () => {
     <button
       onClick={toggleTheme}
       className={`
-        fixed top-6 right-6 z-50 p-3 rounded-full transition-all duration-300 ease-in-out
+        fixed top-6 right-6 z-[60] p-3 rounded-full transition-all duration-300 ease-in-out
         ${isDark 
           ? 'bg-slate-800/80 hover:bg-slate-700/80 text-yellow-400' 
           : 'bg-white/80 hover:bg-gray-100/80 text-slate-700'
