@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { Link } from 'react-scroll';
-import me from '../assets/Portfolio_Image.png';
+import OptimizedImage from './OptimizedImage';
+import profileWebp from '../assets/optimized/Portfolio_Image.webp';
+import profileJpg from '../assets/optimized/Portfolio_Image.jpg';
 const Home = ({ content }) => {
   // Animation states
   const [loaded, setLoaded] = useState(false);
@@ -58,10 +60,9 @@ const Home = ({ content }) => {
           <h1 className={`text-4xl sm:text-6xl xl:text-7xl font-bold transition-all duration-1000 ${
             loaded ? 'opacity-100 rotate-0' : 'opacity-0 rotate-[45deg]'
           }`}>
-            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              {content?.fields.landing_caption || "Building Digital"}
+            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent animate-gradient-x">
+              {content?.fields.landing_caption || "Hey Everyone, I am Hasnain Makada"}
             </span>
-            
           </h1>
 
           {/* Description with fade animation */}
@@ -107,9 +108,10 @@ const Home = ({ content }) => {
             
             {/* Profile image container */}
             <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm p-1">
-              <img
-                src={content?.fields?.profile_image || me}
-                alt="Profile"
+              <OptimizedImage
+                src={content?.fields?.profile_image || profileJpg}
+                webpSrc={profileWebp}
+                alt="Hasnain Makada - Full Stack Developer"
                 className="rounded-2xl w-64 h-64 sm:w-80 sm:h-80 object-cover object-center transform transition-transform duration-500 hover:scale-105"
                 style={{
                   transform: `perspective(1000px) rotateX(${mousePosition.y * 0.05}deg) rotateY(${mousePosition.x * 0.05}deg)`,
