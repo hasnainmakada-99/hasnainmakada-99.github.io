@@ -3,8 +3,10 @@ import { FaBars, FaTimes, FaGithub, FaTwitter } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { Link } from "react-scroll";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Navbar = () => {
+  const { isDark } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [currentSection, setCurrentSection] = useState("home");
@@ -69,7 +71,7 @@ const Navbar = () => {
         hover:scale-105 ${
           currentSection === to
             ? "text-blue-400"
-            : "text-gray-300 hover:text-blue-400"
+            : `${isDark ? 'text-gray-300' : 'text-gray-700'} hover:text-blue-400`
         }`}
     >
       {children}
@@ -94,7 +96,9 @@ const Navbar = () => {
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        hasScrolled ? "backdrop-blur-lg bg-slate-900/90" : "bg-transparent"
+        hasScrolled 
+          ? `backdrop-blur-lg ${isDark ? 'bg-slate-900/90' : 'bg-white/90'}` 
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,7 +106,11 @@ const Navbar = () => {
           {/* Logo */}
           <div className="relative group transform hover:scale-105 transition-transform duration-300">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-300" />
-            <div className="relative px-4 py-2 bg-slate-900 rounded-lg ring-1 ring-slate-800/50">
+            <div className={`relative px-4 py-2 rounded-lg ring-1 transition-all duration-300 ${
+              isDark 
+                ? 'bg-slate-900 ring-slate-800/50' 
+                : 'bg-white ring-gray-200/50'
+            }`}>
               <h1 className="text-lg sm:text-xl lg:text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent whitespace-nowrap">
                 Hasnain Makada
               </h1>
@@ -128,7 +136,11 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden relative z-50 p-3 rounded-lg bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-105"
+            className={`lg:hidden relative z-50 p-3 rounded-lg backdrop-blur-sm border transition-all duration-300 hover:scale-105 hover:text-blue-400 ${
+              isDark 
+                ? 'bg-slate-800/50 border-slate-700/50 text-gray-300' 
+                : 'bg-white/50 border-gray-300/50 text-gray-700'
+            }`}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -139,10 +151,14 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         className={`fixed inset-0 transition-all duration-300 lg:hidden ${
-          isMenuOpen ? "opacity-100 visible bg-slate-900" : "opacity-0 invisible pointer-events-none"
+          isMenuOpen 
+            ? `opacity-100 visible ${isDark ? 'bg-slate-900' : 'bg-white'}` 
+            : "opacity-0 invisible pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-center justify-center min-h-screen bg-slate-900">
+        <div className={`flex flex-col items-center justify-center min-h-screen ${
+          isDark ? 'bg-slate-900' : 'bg-white'
+        }`}>
           <nav className="space-y-8 text-center">
             {navigationItems.map(({ title, path }) => (
               <div key={path} className="transform hover:scale-105 transition-transform duration-300">

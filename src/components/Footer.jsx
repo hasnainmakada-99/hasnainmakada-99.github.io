@@ -1,8 +1,15 @@
 import React from "react";
+import { useTheme } from '../contexts/ThemeContext';
 
 const Footer = () => {
+  const { isDark } = useTheme();
+  
   return (
-    <div className="bg-[#0a192f] bg-gradient-to-b from-slate-900 to-slate-950">
+    <div className={`${
+      isDark 
+        ? 'bg-gradient-to-b from-slate-900 to-slate-950' 
+        : 'bg-gradient-to-b from-gray-100 to-gray-200'
+    }`}>
       <div className="flex place-content-center">
         <a href="https://buttercms.com/" target="_blank">
           <img

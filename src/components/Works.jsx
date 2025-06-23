@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
+import { useTheme } from '../contexts/ThemeContext';
 
 const Works = ({ content }) => {
+  const { isDark } = useTheme();
+  
   // Animation variants for staggered card animations
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -29,17 +32,23 @@ const Works = ({ content }) => {
   const ProjectCard = ({ work, index }) => (
     <motion.div
       variants={cardVariants}
-      className="group relative flex flex-col h-full bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/50"
+      className={`group relative flex flex-col h-full backdrop-blur-sm rounded-xl overflow-hidden border ${
+        isDark 
+          ? 'bg-slate-800/50 border-slate-700/50' 
+          : 'bg-white/50 border-gray-300/50'
+      }`}
     >
       {/* Project Header with Gradient Accent */}
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 group-hover:opacity-0 transition-opacity duration-300" />
         <div className="p-6">
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-blue-900 transition-colors duration-300">
+          <h3 className={`text-xl sm:text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors duration-300 ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>
             {work.work_title}
           </h3>
           {/* Project number indicator */}
-          <div className="absolute top-4 right-4 text-sm font-mono text-slate-500">
+          <div className={`absolute top-4 right-4 text-sm font-mono ${isDark ? 'text-slate-500' : 'text-gray-400'}`}>
             {String(index + 1).padStart(2, "0")}
           </div>
         </div>
@@ -47,7 +56,7 @@ const Works = ({ content }) => {
 
       {/* Project Description */}
       <div className="flex-grow p-6 pt-0">
-        <p className="text-white text-sm sm:text-base leading-relaxed">
+        <p className={`text-sm sm:text-base leading-relaxed ${isDark ? 'text-white' : 'text-gray-800'}`}>
           <br />
           {work.work_description}
         </p>
@@ -59,7 +68,9 @@ const Works = ({ content }) => {
           href={work.github_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors duration-300"
+          className={`inline-flex items-center gap-2 text-sm font-medium hover:text-blue-400 transition-colors duration-300 ${
+            isDark ? 'text-gray-300' : 'text-gray-600'
+          }`}
         >
           <Github className="w-5 h-5" />
           <span>View Code</span>
@@ -74,7 +85,11 @@ const Works = ({ content }) => {
   return (
     <section
       id="works"
-      className="relative min-h-screen w-full text-gray-300 py-20 bg-gradient-to-b from-slate-950 to-slate-900 text-gray-100 py-24 px-4  bg-gradient-to-b from-slate-900 to-slate-950 "
+      className={`relative min-h-screen w-full py-20 px-4 ${
+        isDark 
+          ? 'bg-gradient-to-b from-slate-950 to-slate-900 text-gray-300' 
+          : 'bg-gradient-to-b from-gray-50 to-white text-gray-900'
+      }`}
     >
       {/* Background Gradients */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)]" />
@@ -95,7 +110,7 @@ const Works = ({ content }) => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-4 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto"
+            className={`mt-4 text-lg sm:text-xl max-w-2xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-600'}`}
           >
             A showcase of my recent work and side projects exploring various
             technologies and solutions.
