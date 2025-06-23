@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import ContactForm from "./ContactForm";
 
 const Contact = ({ content }) => {
   // Animation variants for staggered card animations
@@ -91,6 +92,16 @@ const Contact = ({ content }) => {
           </motion.p>
         </div>
 
+        {/* Contact Form */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mb-16"
+        >
+          <ContactForm />
+        </motion.div>
+
         {/* Contact cards grid */}
         <motion.div
           variants={containerVariants}
@@ -98,27 +109,33 @@ const Contact = ({ content }) => {
           animate="visible"
           className="grid grid-cols-1 sm:grid-cols-2 gap-6"
         >
-          {content?.fields.contacts.map((contact, index) => (
+          {content?.fields.contacts?.map((contact, index) => (
             <ContactCard key={index} contact={contact} />
-          ))}
-        </motion.div>
-
-        {/* Additional contact information */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-gray-400">
-            Prefer email? You can also reach me directly at{' '}
-            <a
-              href="mailto:your.email@example.com"
-              className="text-blue-400 hover:text-blue-300 transition-colors duration-300"
-            >
-              Hasnainmakada@gmail.com
-            </a>
-          </p>
+          )) || (
+            // Fallback social links if no content from CMS
+            <>
+              <ContactCard contact={{
+                contact_name: "GitHub",
+                contact_url: "https://github.com/hasnainmakada-99",
+                contact_logo: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+              }} />
+              <ContactCard contact={{
+                contact_name: "LinkedIn",
+                contact_url: "https://linkedin.com/in/hasnain-makada",
+                contact_logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+              }} />
+              <ContactCard contact={{
+                contact_name: "Twitter",
+                contact_url: "https://x.com/Hasnain_Makada",
+                contact_logo: "https://abs.twimg.com/icons/apple-touch-icon-192x192.png"
+              }} />
+              <ContactCard contact={{
+                contact_name: "Email",
+                contact_url: "mailto:hasnainmakada@gmail.com",
+                contact_logo: "https://cdn-icons-png.flaticon.com/512/732/732200.png"
+              }} />
+            </>
+          )}
         </motion.div>
       </div>
     </section>
