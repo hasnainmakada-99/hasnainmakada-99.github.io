@@ -10,7 +10,7 @@ const Blogs = ({ content }) => {
   // Fallback blog data if content is not provided
   const defaultBlogs = [
     {
-      blog_title: "The Future of AI Development",
+      blog_title: "The Future of AI Development & Research",
       blog_cover: "/api/placeholder/800/400",
       blog_url: "#",
       blog_excerpt: "Exploring the latest trends in artificial intelligence and machine learning",
