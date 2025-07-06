@@ -24,7 +24,7 @@ const Navbar = () => {
     { href: "https://github.com/hasnainmakada-99", icon: <FaGithub size={20} />, label: "GitHub" },
     { href: "https://x.com/Hasnain_Makada", icon: <FaTwitter size={20} />, label: "Twitter" },
     { href: "mailto:hasnainmakada@gmail.com", icon: <HiOutlineMail size={20} />, label: "Email" },
-    { href: "https://drive.google.com/file/d/1A-wfXwMC18ybQIDENtBDNc4jCAq8QkDV/view?usp=sharing", icon: <BsFillPersonLinesFill size={20} />, label: "Resume" },
+    { href: "https://drive.google.com/file/d/1XIo97HHJ09b_ktLrb4GPp_I4MrHP4S-M/view?usp=sharing", icon: <BsFillPersonLinesFill size={20} />, label: "Resume" },
   ];
 
   useEffect(() => {
