@@ -7,7 +7,6 @@ import Skills from "./components/Skills";
 import Works from "./components/Works";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-import ThemeToggle from "./components/ThemeToggle";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import axios from "axios";
 import Blogs from "./components/Blogs";
@@ -37,7 +36,6 @@ function App() {
   return (
     <ThemeProvider>
       <div className="App theme-bg-primary theme-text-primary">
-        <ThemeToggle />
         <Navbar />
         <Home content={data[0]} />
         <About content={data[1]} />

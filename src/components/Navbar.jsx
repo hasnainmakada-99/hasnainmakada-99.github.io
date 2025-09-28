@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { FaBars, FaTimes, FaGithub, FaTwitter } from "react-icons/fa";
+import { FaBars, FaTimes, FaGithub, FaTwitter, FaSun, FaMoon } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { Link } from "react-scroll";
 import { useTheme } from "../contexts/ThemeContext";
 
 const Navbar = () => {
-  const { isDark } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [currentSection, setCurrentSection] = useState("home");
@@ -24,7 +24,7 @@ const Navbar = () => {
     { href: "https://github.com/hasnainmakada-99", icon: <FaGithub size={20} />, label: "GitHub" },
     { href: "https://x.com/Hasnain_Makada", icon: <FaTwitter size={20} />, label: "Twitter" },
     { href: "mailto:hasnainmakada@gmail.com", icon: <HiOutlineMail size={20} />, label: "Email" },
-    { href: "https://drive.google.com/file/d/1XIo97HHJ09b_ktLrb4GPp_I4MrHP4S-M/view?usp=sharing", icon: <BsFillPersonLinesFill size={20} />, label: "Resume" },
+    { href: "https://drive.google.com/file/d/1AWcpdkmycRylIQJmXe9dAKGWrP0bBnDw/view?usp=sharing", icon: <BsFillPersonLinesFill size={20} />, label: "Resume" },
   ];
 
   useEffect(() => {
@@ -126,25 +126,50 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop Social Links */}
+          {/* Desktop Social Links and Theme Toggle */}
           <div className="hidden lg:flex items-center space-x-3">
             {socialLinks.map((link) => (
               <SocialLink key={link.label} {...link} />
             ))}
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-105"
+              aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+              title={`Switch to ${isDark ? "light" : "dark"} mode`}
+            >
+              {isDark ? <FaSun size={20} /> : <FaMoon size={20} />}
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`lg:hidden relative z-50 p-3 rounded-lg backdrop-blur-sm border transition-all duration-300 hover:scale-105 hover:text-blue-400 ${
-              isDark 
-                ? 'bg-slate-800/50 border-slate-700/50 text-gray-300' 
-                : 'bg-white/50 border-gray-300/50 text-gray-700'
-            }`}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
+          {/* Mobile Theme Toggle and Menu Button */}
+          <div className="lg:hidden flex items-center space-x-2">
+            {/* Mobile Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className={`p-3 rounded-lg backdrop-blur-sm border transition-all duration-300 hover:scale-105 hover:text-blue-400 ${
+                isDark 
+                  ? 'bg-slate-800/50 border-slate-700/50 text-gray-300' 
+                  : 'bg-white/50 border-gray-300/50 text-gray-700'
+              }`}
+              aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+            >
+              {isDark ? <FaSun size={20} /> : <FaMoon size={20} />}
+            </button>
+            
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`relative z-50 p-3 rounded-lg backdrop-blur-sm border transition-all duration-300 hover:scale-105 hover:text-blue-400 ${
+                isDark 
+                  ? 'bg-slate-800/50 border-slate-700/50 text-gray-300' 
+                  : 'bg-white/50 border-gray-300/50 text-gray-700'
+              }`}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+          </div>
         </nav>
       </div>
 
