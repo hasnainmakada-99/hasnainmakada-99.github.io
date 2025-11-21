@@ -4,8 +4,32 @@ import { ExternalLink } from "lucide-react";
 import ContactForm from "./ContactForm";
 import { useTheme } from "../contexts/ThemeContext";
 
-const Contact = ({ content }) => {
+const Contact = () => {
   const { isDark } = useTheme();
+  
+  // Default contact links
+  const contacts = [
+    {
+      contact_name: "GitHub",
+      contact_url: "https://github.com/hasnainmakada-99",
+      contact_logo: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+    },
+    {
+      contact_name: "LinkedIn",
+      contact_url: "https://linkedin.com/in/hasnainmakada-99",
+      contact_logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+    },
+    {
+      contact_name: "Twitter",
+      contact_url: "https://x.com/Hasnain_Makada",
+      contact_logo: "https://abs.twimg.com/icons/apple-touch-icon-192x192.png"
+    },
+    {
+      contact_name: "Email",
+      contact_url: "mailto:hasnainmakada@gmail.com",
+      contact_logo: "https://www.svgrepo.com/show/349378/gmail.svg"
+    }
+  ];
   // Animation variants for staggered card animations
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -127,33 +151,9 @@ const Contact = ({ content }) => {
           animate="visible"
           className="grid grid-cols-1 sm:grid-cols-2 gap-6"
         >
-          {content?.fields.contacts?.map((contact, index) => (
+          {contacts.map((contact, index) => (
             <ContactCard key={index} contact={contact} />
-          )) || (
-            // Fallback social links if no content from CMS
-            <>
-              <ContactCard contact={{
-                contact_name: "GitHub",
-                contact_url: "https://github.com/hasnainmakada-99",
-                contact_logo: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-              }} />
-              <ContactCard contact={{
-                contact_name: "LinkedIn",
-                contact_url: "https://linkedin.com/in/hasnain-makada",
-                contact_logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-              }} />
-              <ContactCard contact={{
-                contact_name: "Twitter",
-                contact_url: "https://x.com/Hasnain_Makada",
-                contact_logo: "https://abs.twimg.com/icons/apple-touch-icon-192x192.png"
-              }} />
-              <ContactCard contact={{
-                contact_name: "Email",
-                contact_url: "mailto:hasnainmakada@gmail.com",
-                contact_logo: "https://cdn-icons-png.flaticon.com/512/732/732200.png"
-              }} />
-            </>
-          )}
+          ))}
         </motion.div>
       </div>
     </section>

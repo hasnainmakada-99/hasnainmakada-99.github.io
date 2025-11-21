@@ -3,8 +3,30 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { useTheme } from '../contexts/ThemeContext';
 
-const Works = ({ content }) => {
+const Works = () => {
   const { isDark } = useTheme();
+  
+  // Default projects array - replace with your actual projects
+  const projects = [
+    {
+      work_title: "AI-Powered Portfolio",
+      work_description: "Modern portfolio with AI-driven animations and interactive elements",
+      work_tech_stack: ["React", "Tailwind CSS", "GSAP", "Framer Motion"],
+      work_links: "https://github.com/hasnainmakada-99",
+    },
+    {
+      work_title: "E-Commerce Platform",
+      work_description: "Full-stack e-commerce solution with payment integration",
+      work_tech_stack: ["Next.js", "Node.js", "MongoDB", "Stripe"],
+      work_links: "https://github.com/hasnainmakada-99",
+    },
+    {
+      work_title: "Real-time Chat App",
+      work_description: "WebSocket-based chat application with real-time messaging",
+      work_tech_stack: ["React", "Socket.io", "Express", "Redis"],
+      work_links: "https://github.com/hasnainmakada-99",
+    },
+  ];
   
   // Animation variants for staggered card animations
   const containerVariants = {
@@ -124,7 +146,7 @@ const Works = ({ content }) => {
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
-          {content?.fields.work.map((work, index) => (
+          {projects.map((work, index) => (
             <ProjectCard key={index} work={work} index={index} />
           ))}
         </motion.div>

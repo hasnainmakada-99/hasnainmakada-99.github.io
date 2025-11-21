@@ -1,50 +1,31 @@
-// import "./App.css";
+// Modern 2026 Portfolio with Next-Gen Design
 
-import About from "./components/About";
-import Navbar from "./components/Navbar";
-import Contact from "./components/Contact";
-import Skills from "./components/Skills";
-import Works from "./components/Works";
-import Home from "./components/Home";
-import Footer from "./components/Footer";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import axios from "axios";
-import Blogs from "./components/Blogs";
-import { useState } from "react";
-import { useEffect } from "react";
+import Navbar2026 from './components/Navbar2026';
+import Home2026 from './components/Home2026';
+import About2026 from './components/About2026';
+import Skills2026 from './components/Skills2026';
+import GitHubPinnedRepos from './components/GitHubPinnedRepos';
+import Blogs2026 from './components/Blogs2026';
+import Contact from './components/Contact';
+import Footer2026 from './components/Footer2026';
+import SmoothScroll from './components/SmoothScroll';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
-  const readToken = "9bb8f973821dd64c277667f81147bc867f8d619e";
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      axios
-        .get(
-          `https://api.buttercms.com/v2/pages/portfolio/portfolio/?auth_token=${readToken}`
-        )
-        .then((res) => {
-          setData(res.data.data.fields.my_personal_portfolio);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getData();
-  }, []);
-
   return (
     <ThemeProvider>
-      <div className="App theme-bg-primary theme-text-primary">
-        <Navbar />
-        <Home content={data[0]} />
-        <About content={data[1]} />
-        <Skills content={data[3]} />
-        <Works content={data[2]} />
-        <Blogs content={data[4]} />
-        <Contact content={data[5]}/>
-        <Footer />
-      </div>
+      <SmoothScroll>
+        <div className="App theme-bg-primary theme-text-primary overflow-x-hidden">
+          <Navbar2026 />
+          <Home2026 />
+          <About2026 />
+          <Skills2026 />
+          <GitHubPinnedRepos />
+          <Blogs2026 />
+          <Contact />
+          <Footer2026 />
+        </div>
+      </SmoothScroll>
     </ThemeProvider>
   );
 }
