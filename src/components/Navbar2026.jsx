@@ -168,6 +168,18 @@ const Navbar2026 = () => {
                   ))}
                 </div>
 
+                {/* Resume Button */}
+                <motion.a
+                  href="https://drive.google.com/file/d/1AWcpdkmycRylIQJmXe9dAKGWrP0bBnDw/view?usp=sharing"
+                  target='_blank'
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-4 py-2 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 rounded-lg text-black font-semibold text-sm shadow-lg shadow-yellow-500/20 hover:shadow-yellow-500/40 transition-all duration-300 flex items-center gap-2"
+                >
+                  <BsFillPersonLinesFill size={18} />
+                  <span>Resume</span>
+                </motion.a>
+
                 {/* Theme Toggle */}
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: 180 }}
@@ -204,6 +216,17 @@ const Navbar2026 = () => {
 
               {/* Mobile Menu Button */}
               <div className="lg:hidden flex items-center gap-2">
+                {/* Mobile Resume Button */}
+                <motion.a
+                  href="/resume.pdf"
+                  download="Hasnain_Makada_Resume.pdf"
+                  whileTap={{ scale: 0.9 }}
+                  className="p-3 rounded-lg bg-gradient-to-r from-yellow-500 to-amber-500 text-black shadow-lg"
+                  aria-label="Download Resume"
+                >
+                  <BsFillPersonLinesFill size={20} />
+                </motion.a>
+
                 {/* Mobile Theme Toggle */}
                 <motion.button
                   whileTap={{ scale: 0.9 }}
@@ -324,6 +347,21 @@ const Navbar2026 = () => {
                     </motion.div>
                   ))}
                 </nav>
+
+                {/* Resume Download Button */}
+                <motion.a
+                  href="/resume.pdf"
+                  download="Hasnain_Makada_Resume.pdf"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 rounded-xl text-black font-semibold shadow-lg shadow-yellow-500/30 transition-all duration-300"
+                >
+                  <BsFillPersonLinesFill size={20} />
+                  <span>Download Resume</span>
+                </motion.a>
 
                 {/* Social Links */}
                 <div className="space-y-4">
