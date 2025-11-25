@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaRocket, FaCode, FaBrain, FaCloud } from 'react-icons/fa';
 import { SiHashnode, SiDevdotto, SiGithub, SiLinkedin } from 'react-icons/si';
+import Tilt from 'react-parallax-tilt';
 import { useTheme } from '../contexts/ThemeContext';
 
 const About2026 = () => {
@@ -48,18 +49,12 @@ const About2026 = () => {
   return (
     <div
       id="about"
-      className={`relative min-h-screen py-24 px-4 overflow-hidden ${
-        isDark
-          ? 'bg-gradient-to-b from-[#1a1f2e] via-[#0f1420] to-[#1a1f2e]'
-          : 'bg-gradient-to-b from-purple-50 via-white to-blue-50'
-      }`}
+      className="relative min-h-screen py-24 px-4 overflow-hidden bg-[var(--bg-secondary)]"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className={`absolute w-96 h-96 rounded-full blur-3xl ${
-            isDark ? 'bg-amber-500/10' : 'bg-amber-400/8'
-          }`}
+          className="absolute w-96 h-96 rounded-full blur-3xl bg-[var(--accent-primary)]/10"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, 50, 0],
@@ -73,9 +68,7 @@ const About2026 = () => {
           style={{ top: '10%', left: '-10%' }}
         />
         <motion.div
-          className={`absolute w-96 h-96 rounded-full blur-3xl ${
-            isDark ? 'bg-yellow-500/10' : 'bg-yellow-400/8'
-          }`}
+          className="absolute w-96 h-96 rounded-full blur-3xl bg-[var(--accent-secondary)]/10"
           animate={{
             scale: [1.2, 1, 1.2],
             x: [0, -50, 0],
@@ -105,8 +98,8 @@ const About2026 = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card"
           >
-            <FaRocket className="text-yellow-400" />
-            <span className={`text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+            <FaRocket className="text-[var(--accent-primary)]" />
+            <span className="text-sm font-medium text-[var(--text-secondary)]">
               About Me
             </span>
           </motion.div>
@@ -116,7 +109,7 @@ const About2026 = () => {
               Building the Future,
             </span>
             <br />
-            <span className={isDark ? 'text-white' : 'text-gray-900'}>
+            <span className="text-[var(--text-primary)]">
               One Line at a Time
             </span>
           </h2>
@@ -132,12 +125,10 @@ const About2026 = () => {
             className="space-y-6"
           >
             <div className="space-y-4">
-              <h3 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <h3 className="text-2xl font-bold text-[var(--text-primary)]">
                 Who Am I?
               </h3>
-              <div className={`text-lg leading-relaxed space-y-4 ${
-                isDark ? 'text-gray-300' : 'text-gray-700'
-              }`}>
+              <div className="text-lg leading-relaxed space-y-4 text-[var(--text-secondary)]">
                 <p>
                   I'm a passionate Full Stack Developer with a keen interest in building scalable, user-centric applications. My journey in tech began with a curiosity for how things work, and has evolved into a career dedicated to creating innovative solutions.
                 </p>
@@ -152,7 +143,7 @@ const About2026 = () => {
 
             {/* Blog Links */}
             <div className="space-y-4 pt-4">
-              <h4 className={`text-lg font-semibold ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+              <h4 className="text-lg font-semibold text-[var(--text-secondary)]">
                 Find my thoughts on:
               </h4>
               <div className="flex flex-wrap gap-3">
@@ -164,19 +155,17 @@ const About2026 = () => {
                   whileTap={{ scale: 0.95 }}
                   className="group flex items-center gap-3 px-6 py-3 glass-card rounded-xl hover-lift"
                 >
-                  <SiHashnode className="text-yellow-500 text-xl" />
+                  <SiHashnode className="text-[var(--accent-primary)] text-xl" />
                   <div>
-                    <div className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <div className="font-semibold text-[var(--text-primary)]">
                       Hashnode
                     </div>
-                    <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <div className="text-xs text-[var(--text-muted)]">
                       Technical Deep Dives
                     </div>
                   </div>
                   <svg
-                    className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${
-                      isDark ? 'text-gray-400' : 'text-gray-600'
-                    }`}
+                    className="w-5 h-5 transition-transform group-hover:translate-x-1 text-[var(--text-secondary)]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -193,19 +182,17 @@ const About2026 = () => {
                   whileTap={{ scale: 0.95 }}
                   className="group flex items-center gap-3 px-6 py-3 glass-card rounded-xl hover-lift"
                 >
-                  <SiDevdotto className="text-gray-900 dark:text-white text-xl" />
+                  <SiDevdotto className="text-[var(--text-primary)] text-xl" />
                   <div>
-                    <div className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <div className="font-semibold text-[var(--text-primary)]">
                       Dev.to
                     </div>
-                    <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <div className="text-xs text-[var(--text-muted)]">
                       Tutorials & Guides
                     </div>
                   </div>
                   <svg
-                    className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${
-                      isDark ? 'text-gray-400' : 'text-gray-600'
-                    }`}
+                    className="w-5 h-5 transition-transform group-hover:translate-x-1 text-[var(--text-secondary)]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -228,16 +215,23 @@ const About2026 = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                className="glass-card p-6 rounded-2xl hover-lift group"
               >
-                <div className="text-4xl mb-4 gradient-text">{skill.icon}</div>
-                <h4 className={`text-lg font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                  {skill.title}
-                </h4>
-                <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  {skill.desc}
-                </p>
+                <Tilt
+                  tiltMaxAngleX={10}
+                  tiltMaxAngleY={10}
+                  perspective={1000}
+                  scale={1.05}
+                  transitionSpeed={1000}
+                  className="glass-card p-6 rounded-2xl hover-lift group h-full"
+                >
+                  <div className="text-4xl mb-4 gradient-text">{skill.icon}</div>
+                  <h4 className="text-lg font-bold mb-2 text-[var(--text-primary)]">
+                    {skill.title}
+                  </h4>
+                  <p className="text-sm text-[var(--text-secondary)]">
+                    {skill.desc}
+                  </p>
+                </Tilt>
               </motion.div>
             ))}
           </motion.div>
@@ -267,7 +261,7 @@ const About2026 = () => {
               >
                 {stat.value}
               </motion.div>
-              <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              <div className="text-sm text-[var(--text-secondary)]">
                 {stat.label}
               </div>
             </motion.div>
@@ -285,7 +279,7 @@ const About2026 = () => {
             href="#works"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 rounded-full text-black font-semibold shadow-lg shadow-amber-500/30 hover:shadow-2xl transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 theme-gradient rounded-full text-[var(--bg-primary)] font-semibold shadow-lg shadow-[var(--shadow-color)] hover:shadow-2xl transition-all duration-300"
           >
             <span>View My Projects</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

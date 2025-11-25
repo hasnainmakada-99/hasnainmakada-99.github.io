@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaHashtag, FaArrowRight, FaClock, FaHeart, FaComment, FaRss } from 'react-icons/fa';
 import { SiHashnode, SiDevdotto } from 'react-icons/si';
+import Tilt from 'react-parallax-tilt';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Blogs2026 = () => {
@@ -35,7 +36,7 @@ const Blogs2026 = () => {
         const devToParser = new DOMParser();
         const devToXml = devToParser.parseFromString(devToText, 'text/xml');
         const devToItems = devToXml.querySelectorAll('item');
-        
+
         const devToPosts = Array.from(devToItems).slice(0, 6).map(item => {
           const getTextContent = (tagName) => {
             const element = item.querySelector(tagName);
@@ -43,7 +44,7 @@ const Blogs2026 = () => {
           };
 
           const description = getTextContent('description');
-          
+
           return {
             id: getTextContent('guid') || getTextContent('link'),
             title: getTextContent('title'),
@@ -55,7 +56,7 @@ const Blogs2026 = () => {
             source: 'devto',
           };
         });
-        
+
         setDevToBlogs(devToPosts);
       } catch (error) {
         console.error('Error fetching Dev.to RSS:', error);
@@ -97,9 +98,9 @@ const Blogs2026 = () => {
 
         const hashnodeData = await hashnodeResponse.json();
         const hashnodePosts = hashnodeData?.data?.publication?.posts?.edges || [];
-        
+
         console.log('Hashnode posts found:', hashnodePosts.length);
-        
+
         const formattedHashnodePosts = hashnodePosts.map(({ node }) => ({
           id: node.id,
           title: node.title,
@@ -110,7 +111,7 @@ const Blogs2026 = () => {
           reading_time_minutes: node.readTimeInMinutes || 5,
           source: 'hashnode',
         }));
-        
+
         setHashnodeBlogs(formattedHashnodePosts);
       } catch (error) {
         console.error('Error fetching Hashnode RSS:', error);
@@ -144,8 +145,8 @@ const Blogs2026 = () => {
     activeTab === 'all'
       ? allBlogs
       : activeTab === 'devto'
-      ? devToBlogs
-      : hashnodeBlogs;
+        ? devToBlogs
+        : hashnodeBlogs;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -171,18 +172,12 @@ const Blogs2026 = () => {
   return (
     <div
       id="blogs"
-      className={`relative min-h-screen py-24 px-4 overflow-hidden ${
-        isDark
-          ? 'bg-gradient-to-b from-[#0f1420] via-[#1a1f2e] to-[#0f1420]'
-          : 'bg-gradient-to-b from-gray-50 via-white to-yellow-50'
-      }`}
+      className="relative min-h-screen py-24 px-4 overflow-hidden bg-[var(--bg-secondary)]"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className={`absolute w-96 h-96 rounded-full blur-3xl ${
-            isDark ? 'bg-yellow-500/10' : 'bg-yellow-400/5'
-          }`}
+          className="absolute w-96 h-96 rounded-full blur-3xl bg-[var(--accent-primary)]/10"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -197,9 +192,7 @@ const Blogs2026 = () => {
           style={{ top: '20%', right: '-10%' }}
         />
         <motion.div
-          className={`absolute w-96 h-96 rounded-full blur-3xl ${
-            isDark ? 'bg-amber-500/10' : 'bg-amber-400/5'
-          }`}
+          className="absolute w-96 h-96 rounded-full blur-3xl bg-[var(--accent-secondary)]/10"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.4, 0.6, 0.4],
@@ -230,8 +223,8 @@ const Blogs2026 = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card"
           >
-            <FaHashtag className="text-yellow-400" />
-            <span className={`text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+            <FaHashtag className="text-[var(--accent-primary)]" />
+            <span className="text-sm font-medium text-[var(--text-secondary)]">
               Latest Articles
             </span>
           </motion.div>
@@ -242,9 +235,7 @@ const Blogs2026 = () => {
             </span>
           </h2>
 
-          <p className={`text-lg sm:text-xl max-w-2xl mx-auto ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
-          }`}>
+          <p className="text-lg sm:text-xl max-w-2xl mx-auto text-[var(--text-secondary)]">
             Sharing insights on web development, AI, cloud technologies, and modern software engineering
           </p>
         </motion.div>
@@ -266,13 +257,10 @@ const Blogs2026 = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                activeTab === tab.id
-                  ? 'bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black shadow-lg'
-                  : isDark
-                  ? 'glass-card text-gray-300 hover:text-white'
-                  : 'glass-card text-gray-700 hover:text-gray-900'
-              }`}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${activeTab === tab.id
+                ? 'theme-gradient text-[var(--bg-primary)] shadow-lg'
+                : 'glass-card text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                }`}
             >
               {tab.icon}
               <span>{tab.label}</span>
@@ -286,7 +274,7 @@ const Blogs2026 = () => {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-              className="w-16 h-16 border-4 border-blue-500/20 border-t-blue-500 rounded-full"
+              className="w-16 h-16 border-4 border-[var(--accent-primary)]/20 border-t-[var(--accent-primary)] rounded-full"
             />
           </div>
         )}
@@ -303,102 +291,103 @@ const Blogs2026 = () => {
               <motion.article
                 key={blog.id || index}
                 variants={itemVariants}
-                whileHover={{ y: -8 }}
                 className="group h-full"
               >
-                <a
-                  href={blog.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block h-full"
+                <Tilt
+                  tiltMaxAngleX={5}
+                  tiltMaxAngleY={5}
+                  perspective={1000}
+                  scale={1.02}
+                  transitionSpeed={1000}
+                  className="h-full"
                 >
-                  <div className="h-full glass-card rounded-2xl overflow-hidden hover-lift flex flex-col">
-                    {/* Image for Hashnode or Gradient Header for Dev.to */}
-                    {blog.cover_image ? (
-                      <div className="relative overflow-hidden aspect-video">
-                        <motion.img
-                          src={blog.cover_image}
-                          alt={blog.title}
-                          className="w-full h-full object-cover"
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ duration: 0.4 }}
-                        />
-                        
-                        {/* Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </div>
-                    ) : (
-                      /* Gradient header for Dev.to blogs without images */
-                      <div className="relative overflow-hidden h-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-                        <div className="absolute inset-0 opacity-10">
-                          <div className="absolute top-0 left-0 w-full h-full">
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                              <SiDevdotto className="text-white text-6xl opacity-20" />
+                  <a
+                    href={blog.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block h-full"
+                  >
+                    <div className="h-full glass-card rounded-2xl overflow-hidden hover-lift flex flex-col">
+                      {/* Image for Hashnode or Gradient Header for Dev.to */}
+                      {blog.cover_image ? (
+                        <div className="relative overflow-hidden aspect-video">
+                          <motion.img
+                            src={blog.cover_image}
+                            alt={blog.title}
+                            className="w-full h-full object-cover"
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.4 }}
+                          />
+
+                          {/* Gradient Overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      ) : (
+                        /* Gradient header for Dev.to blogs without images */
+                        <div className="relative overflow-hidden h-32 bg-gradient-to-br from-[var(--bg-tertiary)] via-[var(--bg-secondary)] to-[var(--bg-primary)]">
+                          <div className="absolute inset-0 opacity-10">
+                            <div className="absolute top-0 left-0 w-full h-full">
+                              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <SiDevdotto className="text-white text-6xl opacity-20" />
+                              </div>
                             </div>
                           </div>
+                          {/* Decorative elements */}
+                          <div className="absolute top-4 right-4 w-20 h-20 bg-white/5 rounded-full blur-xl" />
+                          <div className="absolute bottom-4 left-4 w-16 h-16 bg-white/5 rounded-full blur-xl" />
                         </div>
-                        {/* Decorative elements */}
-                        <div className="absolute top-4 right-4 w-20 h-20 bg-white/5 rounded-full blur-xl" />
-                        <div className="absolute bottom-4 left-4 w-16 h-16 bg-white/5 rounded-full blur-xl" />
-                      </div>
-                    )}
+                      )}
 
-                    {/* Content */}
-                    <div className="p-6 space-y-4 flex-1 flex flex-col">
-                      {/* Source Badge and Reading Time */}
-                      <div className="flex items-center justify-between">
-                        <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium ${
-                          blog.source === 'devto'
-                            ? 'bg-gray-900 text-white'
-                            : isDark ? 'bg-yellow-900/50 text-yellow-300' : 'bg-yellow-100 text-yellow-600'
-                        }`}>
-                          {blog.source === 'devto' ? (
-                            <>
-                              <SiDevdotto size={14} />
-                              <span>Dev.to</span>
-                            </>
-                          ) : (
-                            <>
-                              <SiHashnode size={14} />
-                              <span>Hashnode</span>
-                            </>
-                          )}
+                      {/* Content */}
+                      <div className="p-6 space-y-4 flex-1 flex flex-col">
+                        {/* Source Badge and Reading Time */}
+                        <div className="flex items-center justify-between">
+                          <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium ${blog.source === 'devto'
+                            ? 'bg-[var(--bg-tertiary)] text-[var(--text-primary)]'
+                            : 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
+                            }`}>
+                            {blog.source === 'devto' ? (
+                              <>
+                                <SiDevdotto size={14} />
+                                <span>Dev.to</span>
+                              </>
+                            ) : (
+                              <>
+                                <SiHashnode size={14} />
+                                <span>Hashnode</span>
+                              </>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-1 text-xs text-[var(--text-muted)]">
+                            <FaClock />
+                            <span>{blog.reading_time_minutes || 5} min</span>
+                          </div>
                         </div>
-                        <div className={`flex items-center gap-1 text-xs ${
-                          isDark ? 'text-gray-400' : 'text-gray-600'
-                        }`}>
-                          <FaClock />
-                          <span>{blog.reading_time_minutes || 5} min</span>
+
+                        {/* Title */}
+                        <h3 className="text-xl font-bold line-clamp-2 group-hover:gradient-text transition-all duration-300 text-[var(--text-primary)]">
+                          {blog.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="line-clamp-3 text-sm flex-1 text-[var(--text-secondary)]">
+                          {blog.description || blog.brief || 'Click to read more...'}
+                        </p>
+
+                        {/* Read More */}
+                        <div className="flex items-center gap-2 text-[var(--accent-primary)] font-medium text-sm mt-auto pt-2">
+                          <span>Read article</span>
+                          <motion.div
+                            animate={{ x: [0, 5, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                          >
+                            <FaArrowRight size={14} />
+                          </motion.div>
                         </div>
-                      </div>
-                      
-                      {/* Title */}
-                      <h3 className={`text-xl font-bold line-clamp-2 group-hover:gradient-text transition-all duration-300 ${
-                        isDark ? 'text-white' : 'text-gray-900'
-                      }`}>
-                        {blog.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className={`line-clamp-3 text-sm flex-1 ${
-                        isDark ? 'text-gray-400' : 'text-gray-600'
-                      }`}>
-                        {blog.description || blog.brief || 'Click to read more...'}
-                      </p>
-
-                      {/* Read More */}
-                      <div className="flex items-center gap-2 text-yellow-400 font-medium text-sm mt-auto pt-2">
-                        <span>Read article</span>
-                        <motion.div
-                          animate={{ x: [0, 5, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                        >
-                          <FaArrowRight size={14} />
-                        </motion.div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+                </Tilt>
               </motion.article>
             ))}
           </motion.div>
@@ -431,7 +420,7 @@ const Blogs2026 = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-600 to-amber-700 rounded-full text-black font-semibold shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 theme-gradient rounded-full text-[var(--bg-primary)] font-semibold shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               <SiHashnode size={20} />
               View on Hashnode
@@ -439,7 +428,7 @@ const Blogs2026 = () => {
             </motion.a>
           </div>
 
-          <p className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
+          <p className="text-sm text-[var(--text-muted)]">
             Follow me on these platforms for more content on web development, cloud technologies, and AI
           </p>
         </motion.div>

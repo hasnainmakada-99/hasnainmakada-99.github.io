@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { HiArrowNarrowRight, HiSparkles } from 'react-icons/hi';
+import { TypeAnimation } from 'react-type-animation';
 import { Link } from 'react-scroll';
 import { useTheme } from '../contexts/ThemeContext';
 import ParticleBackground from './ParticleBackground';
@@ -40,11 +41,7 @@ const Home2026 = () => {
     <div
       ref={containerRef}
       name="home"
-      className={`relative min-h-screen w-full overflow-hidden transition-all duration-700 ${
-        isDark
-          ? 'bg-gradient-to-br from-[#0a0a0a] via-[#141414] to-[#1c1c1c]'
-          : 'bg-gradient-to-br from-white via-gray-50 to-gray-100'
-      }`}
+      className="relative min-h-screen w-full overflow-hidden transition-all duration-700 bg-[var(--bg-primary)]"
     >
       {/* Particle Background */}
       <ParticleBackground />
@@ -52,9 +49,7 @@ const Home2026 = () => {
       {/* Animated Gradient Blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className={`absolute w-[600px] h-[600px] rounded-full blur-3xl animate-blob ${
-            isDark ? 'bg-yellow-500/20' : 'bg-yellow-400/10'
-          }`}
+          className="absolute w-[600px] h-[600px] rounded-full blur-3xl animate-blob bg-[var(--accent-primary)]/10"
           style={{
             top: '-10%',
             right: '-10%',
@@ -71,9 +66,7 @@ const Home2026 = () => {
           }}
         />
         <motion.div
-          className={`absolute w-[500px] h-[500px] rounded-full blur-3xl animate-blob ${
-            isDark ? 'bg-amber-500/20' : 'bg-amber-400/10'
-          }`}
+          className="absolute w-[500px] h-[500px] rounded-full blur-3xl animate-blob bg-[var(--accent-secondary)]/10"
           style={{
             bottom: '-10%',
             left: '-10%',
@@ -91,9 +84,7 @@ const Home2026 = () => {
           }}
         />
         <motion.div
-          className={`absolute w-[400px] h-[400px] rounded-full blur-3xl animate-blob ${
-            isDark ? 'bg-yellow-600/15' : 'bg-yellow-300/8'
-          }`}
+          className="absolute w-[400px] h-[400px] rounded-full blur-3xl animate-blob bg-[var(--accent-tertiary)]/10"
           style={{
             top: '40%',
             left: '50%',
@@ -124,21 +115,7 @@ const Home2026 = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full lg:w-1/2 space-y-8 text-center lg:text-left z-10"
         >
-        <br />
-          {/* Welcome Badge */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card"
-          > */}
-            {/* <HiSparkles className="text-yellow-400 animate-pulse" /> */}
-            {/* <span className={`text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-              Welcome to 2026
-            </span> */}
-          {/* </motion.div> */}
-
-          {/* Main Heading */}
+          <br />
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
@@ -149,12 +126,27 @@ const Home2026 = () => {
               Hey Everyone,
             </span>
             <br />
-            <span className={isDark ? 'text-white' : 'text-gray-900'}>
+            <span className="text-[var(--text-primary)]">
               I'm{' '}
               <span className="relative inline-block">
-                <span className="gradient-text animate-gradient-shift">Hasnain Makada</span>
+                <TypeAnimation
+                  sequence={[
+                    'Hasnain Makada',
+                    2000,
+                    'a Developer',
+                    2000,
+                    'a Creator',
+                    2000,
+                    'an Innovator',
+                    2000,
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  className="gradient-text animate-gradient-shift"
+                  repeat={Infinity}
+                />
                 <motion.span
-                  className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 rounded-full"
+                  className="absolute -bottom-2 left-0 w-full h-1 bg-[var(--accent-gradient)] rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: isVisible ? 1 : 0 }}
                   transition={{ duration: 0.8, delay: 1 }}
@@ -168,9 +160,7 @@ const Home2026 = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className={`text-lg sm:text-xl lg:text-2xl max-w-2xl mx-auto lg:mx-0 ${
-              isDark ? 'text-gray-400' : 'text-gray-600'
-            }`}
+            className="text-lg sm:text-xl lg:text-2xl max-w-2xl mx-auto lg:mx-0 text-[var(--text-secondary)]"
           >
             Full Stack Developer & Tech Innovator crafting next-generation digital experiences with{' '}
             <span className="gradient-text font-semibold">AI</span>,{' '}
@@ -191,9 +181,7 @@ const Home2026 = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
                 transition={{ duration: 0.4, delay: 0.9 + index * 0.1 }}
-                className={`px-4 py-2 rounded-full glass-card text-sm font-medium hover-lift ${
-                  isDark ? 'text-gray-300' : 'text-gray-700'
-                }`}
+                className="px-4 py-2 rounded-full glass-card text-sm font-medium hover-lift text-[var(--text-secondary)]"
               >
                 {tech}
               </motion.span>
@@ -207,29 +195,30 @@ const Home2026 = () => {
             transition={{ duration: 0.8, delay: 1 }}
             className="flex flex-wrap gap-4 justify-center lg:justify-start"
           >
-            <Link
-              to="works"
-              smooth
-              duration={800}
-              className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 rounded-full text-black font-semibold shadow-lg shadow-yellow-500/30 hover:shadow-2xl hover:shadow-amber-500/40 hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span className="relative z-10">View My Work</span>
-              <motion.span
-                className="group-hover:translate-x-1 transition-transform duration-300 relative z-10"
-                whileHover={{ x: 5 }}
+              <Link
+                to="works"
+                smooth
+                duration={800}
+                className="group relative inline-flex items-center gap-2 px-8 py-4 theme-gradient rounded-full text-[var(--bg-primary)] font-semibold shadow-lg shadow-[var(--shadow-color)] hover:shadow-2xl hover:shadow-[var(--accent-primary)]/40 transition-all duration-300 cursor-pointer overflow-hidden"
               >
-                <HiArrowNarrowRight size={20} />
-              </motion.span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </Link>
+                <span className="relative z-10">View My Work</span>
+                <motion.span
+                  className="group-hover:translate-x-1 transition-transform duration-300 relative z-10"
+                  whileHover={{ x: 5 }}
+                >
+                  <HiArrowNarrowRight size={20} />
+                </motion.span>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Link>
+            </motion.div>
 
             <a
               href="#contact"
-              className={`inline-flex items-center gap-2 px-8 py-4 glass-card rounded-full font-semibold border-2 transition-all duration-300 hover-lift ${
-                isDark
-                  ? 'text-gray-300 hover:text-white hover:border-blue-500/50'
-                  : 'text-gray-700 hover:text-gray-900 hover:border-blue-500/50'
-              }`}
+              className="inline-flex items-center gap-2 px-8 py-4 glass-card rounded-full font-semibold border-2 transition-all duration-300 hover-lift text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-primary)]/50"
             >
               Get in Touch
             </a>
@@ -255,7 +244,7 @@ const Home2026 = () => {
                 className="text-center"
               >
                 <div className="text-2xl sm:text-3xl font-bold gradient-text">{stat.value}</div>
-                <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <div className="text-sm text-[var(--text-muted)]">
                   {stat.label}
                 </div>
               </motion.div>
@@ -273,12 +262,12 @@ const Home2026 = () => {
           <div className="relative group">
             {/* Rotating rings */}
             <motion.div
-              className="absolute -inset-4 rounded-full border-2 border-blue-500/20"
+              className="absolute -inset-4 rounded-full border-2 border-[var(--accent-primary)]/20"
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
             />
             <motion.div
-              className="absolute -inset-8 rounded-full border-2 border-purple-500/20"
+              className="absolute -inset-8 rounded-full border-2 border-[var(--accent-secondary)]/20"
               animate={{ rotate: -360 }}
               transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
             />
@@ -300,12 +289,12 @@ const Home2026 = () => {
                 />
 
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-yellow-500/30 via-transparent to-amber-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-primary)]/30 via-transparent to-[var(--accent-secondary)]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* Floating elements */}
               <motion.div
-                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-yellow-500 to-amber-500 rounded-full blur-xl opacity-60"
+                className="absolute -top-4 -right-4 w-20 h-20 bg-[var(--accent-gradient)] rounded-full blur-xl opacity-60"
                 animate={{
                   scale: [1, 1.2, 1],
                   opacity: [0.6, 0.8, 0.6],
@@ -317,7 +306,7 @@ const Home2026 = () => {
                 }}
               />
               <motion.div
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full blur-xl opacity-60"
+                className="absolute -bottom-4 -left-4 w-16 h-16 bg-[var(--accent-gradient)] rounded-full blur-xl opacity-60"
                 animate={{
                   scale: [1.2, 1, 1.2],
                   opacity: [0.8, 0.6, 0.8],
@@ -343,7 +332,7 @@ const Home2026 = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className={`flex flex-col items-center gap-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}
+          className="flex flex-col items-center gap-2 text-[var(--text-muted)]"
         >
           <span className="text-sm font-medium">Scroll to explore</span>
           <svg

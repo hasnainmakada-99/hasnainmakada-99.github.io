@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaHeart, FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { SiHashnode, SiDevdotto } from 'react-icons/si';
 import { useTheme } from '../contexts/ThemeContext';
@@ -7,6 +7,16 @@ import { useTheme } from '../contexts/ThemeContext';
 const Footer2026 = () => {
   const { isDark } = useTheme();
   const currentYear = new Date().getFullYear();
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const socialLinks = [
     { icon: <FaGithub size={20} />, href: 'https://github.com/hasnainmakada-99', label: 'GitHub' },
@@ -28,20 +38,12 @@ const Footer2026 = () => {
 
   return (
     <footer
-      className={`relative overflow-hidden ${
-        isDark
-          ? 'bg-gradient-to-b from-[#0f1420] to-[#0a0e1a]'
-          : 'bg-gradient-to-b from-gray-100 to-white'
-      }`}
+      className="relative overflow-hidden bg-[var(--bg-secondary)]"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute w-96 h-96 rounded-full blur-3xl ${
-          isDark ? 'bg-yellow-500/5' : 'bg-yellow-400/5'
-        }`} style={{ top: '0%', left: '10%' }} />
-        <div className={`absolute w-96 h-96 rounded-full blur-3xl ${
-          isDark ? 'bg-amber-500/5' : 'bg-amber-400/5'
-        }`} style={{ bottom: '0%', right: '10%' }} />
+        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-[var(--accent-primary)]/5" style={{ top: '0%', left: '10%' }} />
+        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-[var(--accent-secondary)]/5" style={{ bottom: '0%', right: '10%' }} />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -58,10 +60,8 @@ const Footer2026 = () => {
               <h3 className="text-2xl sm:text-3xl font-bold mb-4">
                 <span className="gradient-text">Hasnain Makada</span>
               </h3>
-              <p className={`text-base sm:text-lg max-w-md ${
-                isDark ? 'text-gray-400' : 'text-gray-600'
-              }`}>
-                Full Stack Developer passionate about building innovative solutions 
+              <p className="text-base sm:text-lg max-w-md text-[var(--text-secondary)]">
+                Full Stack Developer passionate about building innovative solutions
                 and sharing knowledge with the tech community.
               </p>
             </motion.div>
@@ -74,7 +74,7 @@ const Footer2026 = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex items-center gap-3"
             >
-              <span className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
+              <span className="text-sm text-[var(--text-muted)]">
                 Built with React + Vite
               </span>
             </motion.div>
@@ -88,9 +88,7 @@ const Footer2026 = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="space-y-4"
           >
-            <h4 className={`text-lg font-semibold mb-6 ${
-              isDark ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h4 className="text-lg font-semibold mb-6 text-[var(--text-primary)]">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -98,11 +96,7 @@ const Footer2026 = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className={`inline-block transition-all duration-300 hover:translate-x-2 ${
-                      isDark
-                        ? 'text-gray-400 hover:text-yellow-400'
-                        : 'text-gray-600 hover:text-yellow-600'
-                    }`}
+                    className="inline-block transition-all duration-300 hover:translate-x-2 text-[var(--text-secondary)] hover:text-[var(--accent-primary)]"
                   >
                     {link.name}
                   </a>
@@ -119,9 +113,7 @@ const Footer2026 = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="space-y-4"
           >
-            <h4 className={`text-lg font-semibold mb-6 ${
-              isDark ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h4 className="text-lg font-semibold mb-6 text-[var(--text-primary)]">
               Connect With Me
             </h4>
             <div className="flex flex-wrap gap-3">
@@ -133,11 +125,7 @@ const Footer2026 = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`p-3 rounded-lg glass-card transition-all duration-300 ${
-                    isDark
-                      ? 'text-gray-400 hover:text-yellow-400'
-                      : 'text-gray-600 hover:text-yellow-600'
-                  }`}
+                  className="p-3 rounded-lg glass-card transition-all duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-primary)]"
                   aria-label={link.label}
                 >
                   {link.icon}
@@ -148,9 +136,7 @@ const Footer2026 = () => {
         </div>
 
         {/* Divider */}
-        <div className={`border-t my-8 ${
-          isDark ? 'border-gray-800' : 'border-gray-200'
-        }`} />
+        <div className="border-t my-8 border-[var(--border-color)]" />
 
         {/* Bottom Bar */}
         <motion.div
@@ -160,13 +146,11 @@ const Footer2026 = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row justify-between items-center gap-4"
         >
-          <p className={`text-sm text-center sm:text-left ${
-            isDark ? 'text-gray-500' : 'text-gray-600'
-          }`}>
+          <p className="text-sm text-center sm:text-left text-[var(--text-muted)]">
             © {currentYear} Hasnain Makada. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-sm">
-            <span className={isDark ? 'text-gray-500' : 'text-gray-600'}>
+            <span className="text-[var(--text-muted)]">
               Made with
             </span>
             <motion.div
@@ -181,7 +165,7 @@ const Footer2026 = () => {
             >
               <FaHeart className="text-red-500" />
             </motion.div>
-            <span className={isDark ? 'text-gray-500' : 'text-gray-600'}>
+            <span className="text-[var(--text-muted)]">
               and
             </span>
             <span className="gradient-text font-semibold">React</span>
@@ -189,27 +173,34 @@ const Footer2026 = () => {
         </motion.div>
 
         {/* Scroll to Top Button */}
-        <motion.button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 rounded-full text-black shadow-lg hover:shadow-2xl transition-all duration-300 z-40"
-          aria-label="Scroll to top"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 10l7-7m0 0l7 7m-7-7v18"
-            />
-          </svg>
-        </motion.button>
+        <AnimatePresence>
+          {showScrollTop && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="fixed bottom-8 right-8 p-4 theme-gradient rounded-full text-[var(--bg-primary)] shadow-lg hover:shadow-2xl transition-all duration-300 z-40"
+              aria-label="Scroll to top"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 10l7-7m0 0l7 7m-7-7v18"
+                />
+              </svg>
+            </motion.button>
+          )}
+        </AnimatePresence>
       </div>
     </footer>
   );
