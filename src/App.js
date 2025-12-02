@@ -11,22 +11,28 @@ import Footer2026 from './components/Footer2026';
 import SmoothScroll from './components/SmoothScroll';
 import { ThemeProvider } from './contexts/ThemeContext';
 
+import { HelmetProvider } from 'react-helmet-async';
+import SEO from './components/SEO';
+
 function App() {
   return (
-    <ThemeProvider>
-      <SmoothScroll>
-        <div className="App theme-bg-primary theme-text-primary overflow-x-hidden">
-          <Navbar2026 />
-          <Home2026 />
-          <About2026 />
-          <Skills2026 />
-          <GitHubPinnedRepos />
-          <Blogs2026 />
-          <Contact />
-          <Footer2026 />
-        </div>
-      </SmoothScroll>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <SEO />
+        <SmoothScroll>
+          <div className="App theme-bg-primary theme-text-primary overflow-x-hidden">
+            <Navbar2026 />
+            <Home2026 />
+            <About2026 />
+            <Skills2026 />
+            <GitHubPinnedRepos />
+            <Blogs2026 />
+            <Contact />
+            <Footer2026 />
+          </div>
+        </SmoothScroll>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 
