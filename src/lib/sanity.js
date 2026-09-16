@@ -8,7 +8,10 @@ export const sanityClient = createClient({
 });
 
 const ALL_CONTENT_QUERY = `{
-  "profile": *[_type == "profile"][0],
+  "profile": *[_type == "profile"][0]{
+    ...,
+    "avatar": avatar.asset->url
+  },
   "nav": *[_type == "navigation"][0],
   "social": *[_type == "socialLinks"][0],
   "about": *[_type == "about"][0],
