@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaHashtag, FaArrowRight, FaClock, FaHeart, FaComment, FaRss } from 'react-icons/fa';
+import { FaClock } from 'react-icons/fa';
 import { SiHashnode, SiDevdotto } from 'react-icons/si';
-import Tilt from 'react-parallax-tilt';
-import { useTheme } from '../contexts/ThemeContext';
+import PromptHeading from './PromptHeading';
+import Reveal from './Reveal';
+import { useContent } from '../contexts/ContentContext';
 
 const Blogs2026 = () => {
-  const { isDark } = useTheme();
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
-
+  const { blogsSettings: blogsConfig } = useContent();
   const [devToBlogs, setDevToBlogs] = useState([]);
   const [hashnodeBlogs, setHashnodeBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('all');
 
-  const DEV_TO_USERNAME = 'hasnainmakada99';
-  const HASHNODE_BLOG_URL = 'hasnainm.hashnode.dev';
+  const DEV_TO_USERNAME = blogsConfig.devToUsername;
+  const HASHNODE_BLOG_URL = blogsConfig.hashnodeHost;
 
   useEffect(() => {
     fetchBlogs();
@@ -99,8 +93,6 @@ const Blogs2026 = () => {
         const hashnodeData = await hashnodeResponse.json();
         const hashnodePosts = hashnodeData?.data?.publication?.posts?.edges || [];
 
-        console.log('Hashnode posts found:', hashnodePosts.length);
-
         const formattedHashnodePosts = hashnodePosts.map(({ node }) => ({
           id: node.id,
           title: node.title,
@@ -124,12 +116,6 @@ const Blogs2026 = () => {
     }
   };
 
-  const extractImageFromContent = (content) => {
-    if (!content) return null;
-    const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-    return imgMatch ? imgMatch[1] : null;
-  };
-
   const calculateReadingTime = (text) => {
     const wordsPerMinute = 200;
     const words = text.trim().split(/\s+/).length;
@@ -148,292 +134,88 @@ const Blogs2026 = () => {
         ? devToBlogs
         : hashnodeBlogs;
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   return (
-    <div
-      id="blogs"
-      className="relative min-h-screen py-24 px-4 overflow-hidden bg-[var(--bg-secondary)]"
-    >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute w-96 h-96 rounded-full blur-3xl bg-[var(--accent-primary)]/10"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          style={{ top: '20%', right: '-10%' }}
-        />
-        <motion.div
-          className="absolute w-96 h-96 rounded-full blur-3xl bg-[var(--accent-secondary)]/10"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.4, 0.6, 0.4],
-            x: [0, -100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          style={{ bottom: '20%', left: '-10%' }}
-        />
-      </div>
-
-      {/* Main Content */}
-      <div ref={ref} className="relative max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 space-y-6"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card"
-          >
-            <FaHashtag className="text-[var(--accent-primary)]" />
-            <span className="text-sm font-medium text-[var(--text-secondary)]">
-              Latest Articles
-            </span>
-          </motion.div>
-
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
-            <span className="gradient-text animate-gradient-shift">
-              My Blog Posts
-            </span>
-          </h2>
-
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto text-[var(--text-secondary)]">
-            Sharing insights on web development, AI, cloud technologies, and modern software engineering
-          </p>
-        </motion.div>
-
-        {/* Platform Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
+    <Reveal as="section" id="blogs" className="max-w-2xl mx-auto px-6 py-10">
+      <div className="flex items-center justify-between mb-4 gap-4 flex-wrap">
+        <PromptHeading cmd={blogsConfig.heading} branch="mid" className="mb-0" />
+        <div className="flex gap-3 text-xs font-['JetBrains_Mono']">
           {[
-            { id: 'all', label: 'All Posts', icon: <FaHashtag /> },
-            { id: 'devto', label: 'Dev.to', icon: <SiDevdotto /> },
-            { id: 'hashnode', label: 'Hashnode', icon: <SiHashnode /> },
+            { id: 'all', label: 'All' },
+            { id: 'devto', label: 'Dev.to' },
+            { id: 'hashnode', label: 'Hashnode' },
           ].map((tab) => (
-            <motion.button
+            <button
               key={tab.id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${activeTab === tab.id
-                ? 'theme-gradient text-[var(--bg-primary)] shadow-lg'
-                : 'glass-card text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                }`}
+              className={
+                activeTab === tab.id
+                  ? 'text-[var(--text-primary)] underline underline-offset-4'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
+              }
             >
-              {tab.icon}
-              <span>{tab.label}</span>
-            </motion.button>
+              {tab.label}
+            </button>
           ))}
-        </motion.div>
-
-        {/* Loading State */}
-        {loading && (
-          <div className="flex justify-center items-center py-20">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-              className="w-16 h-16 border-4 border-[var(--accent-primary)]/20 border-t-[var(--accent-primary)] rounded-full"
-            />
-          </div>
-        )}
-
-        {/* Blogs Grid */}
-        {!loading && (
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? 'visible' : 'hidden'}
-            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-          >
-            {filteredBlogs.map((blog, index) => (
-              <motion.article
-                key={blog.id || index}
-                variants={itemVariants}
-                className="group h-full"
-              >
-                <Tilt
-                  tiltMaxAngleX={5}
-                  tiltMaxAngleY={5}
-                  perspective={1000}
-                  scale={1.02}
-                  transitionSpeed={1000}
-                  className="h-full"
-                >
-                  <a
-                    href={blog.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block h-full"
-                  >
-                    <div className="h-full glass-card rounded-2xl overflow-hidden hover-lift flex flex-col">
-                      {/* Image for Hashnode or Gradient Header for Dev.to */}
-                      {blog.cover_image ? (
-                        <div className="relative overflow-hidden aspect-video">
-                          <motion.img
-                            src={blog.cover_image}
-                            alt={blog.title}
-                            className="w-full h-full object-cover"
-                            whileHover={{ scale: 1.1 }}
-                            transition={{ duration: 0.4 }}
-                          />
-
-                          {/* Gradient Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </div>
-                      ) : (
-                        /* Gradient header for Dev.to blogs without images */
-                        <div className="relative overflow-hidden h-32 bg-gradient-to-br from-[var(--bg-tertiary)] via-[var(--bg-secondary)] to-[var(--bg-primary)]">
-                          <div className="absolute inset-0 opacity-10">
-                            <div className="absolute top-0 left-0 w-full h-full">
-                              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                <SiDevdotto className="text-white text-6xl opacity-20" />
-                              </div>
-                            </div>
-                          </div>
-                          {/* Decorative elements */}
-                          <div className="absolute top-4 right-4 w-20 h-20 bg-white/5 rounded-full blur-xl" />
-                          <div className="absolute bottom-4 left-4 w-16 h-16 bg-white/5 rounded-full blur-xl" />
-                        </div>
-                      )}
-
-                      {/* Content */}
-                      <div className="p-6 space-y-4 flex-1 flex flex-col">
-                        {/* Source Badge and Reading Time */}
-                        <div className="flex items-center justify-between">
-                          <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium ${blog.source === 'devto'
-                            ? 'bg-[var(--bg-tertiary)] text-[var(--text-primary)]'
-                            : 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
-                            }`}>
-                            {blog.source === 'devto' ? (
-                              <>
-                                <SiDevdotto size={14} />
-                                <span>Dev.to</span>
-                              </>
-                            ) : (
-                              <>
-                                <SiHashnode size={14} />
-                                <span>Hashnode</span>
-                              </>
-                            )}
-                          </div>
-                          <div className="flex items-center gap-1 text-xs text-[var(--text-muted)]">
-                            <FaClock />
-                            <span>{blog.reading_time_minutes || 5} min</span>
-                          </div>
-                        </div>
-
-                        {/* Title */}
-                        <h3 className="text-xl font-bold line-clamp-2 group-hover:gradient-text transition-all duration-300 text-[var(--text-primary)]">
-                          {blog.title}
-                        </h3>
-
-                        {/* Description */}
-                        <p className="line-clamp-3 text-sm flex-1 text-[var(--text-secondary)]">
-                          {blog.description || blog.brief || 'Click to read more...'}
-                        </p>
-
-                        {/* Read More */}
-                        <div className="flex items-center gap-2 text-[var(--accent-primary)] font-medium text-sm mt-auto pt-2">
-                          <span>Read article</span>
-                          <motion.div
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                          >
-                            <FaArrowRight size={14} />
-                          </motion.div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </Tilt>
-              </motion.article>
-            ))}
-          </motion.div>
-        )}
-
-        {/* View All CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 text-center space-y-8"
-        >
-          <div className="flex flex-wrap justify-center gap-4">
-            <motion.a
-              href="https://dev.to/hasnainmakada"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 rounded-full text-white font-semibold shadow-lg hover:shadow-2xl transition-all duration-300"
-            >
-              <SiDevdotto size={20} />
-              View on Dev.to
-              <FaArrowRight />
-            </motion.a>
-
-            <motion.a
-              href="https://hasnainm.hashnode.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 theme-gradient rounded-full text-[var(--bg-primary)] font-semibold shadow-lg hover:shadow-2xl transition-all duration-300"
-            >
-              <SiHashnode size={20} />
-              View on Hashnode
-              <FaArrowRight />
-            </motion.a>
-          </div>
-
-          <p className="text-sm text-[var(--text-muted)]">
-            Follow me on these platforms for more content on web development, cloud technologies, and AI
-          </p>
-        </motion.div>
+        </div>
       </div>
-    </div>
+
+      {loading && (
+        <p className="text-sm text-[var(--text-muted)]">Loading articles…</p>
+      )}
+
+      {!loading && (
+        <ul className="space-y-5 font-['JetBrains_Mono'] text-sm">
+          {filteredBlogs.map((blog, index) => (
+            <li key={blog.id || index}>
+              <a
+                href={blog.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-[var(--text-primary)] hover:opacity-70 underline underline-offset-4"
+              >
+                {blog.title}
+              </a>
+              <div className="flex items-center gap-3 mt-1 text-xs text-[var(--text-muted)]">
+                <span className="flex items-center gap-1">
+                  {blog.source === 'devto' ? <SiDevdotto /> : <SiHashnode />}
+                  {blog.source === 'devto' ? 'Dev.to' : 'Hashnode'}
+                </span>
+                <span className="flex items-center gap-1">
+                  <FaClock /> {blog.reading_time_minutes || 5} min
+                </span>
+              </div>
+              {(blog.description || blog.brief) && (
+                <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                  {blog.description || blog.brief}
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <p className="mt-6 text-sm text-[var(--text-muted)]">
+        More on{' '}
+        <a
+          href={blogsConfig.devToUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] underline underline-offset-4"
+        >
+          Dev.to
+        </a>{' '}
+        and{' '}
+        <a
+          href={blogsConfig.hashnodeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] underline underline-offset-4"
+        >
+          Hashnode
+        </a>
+        .
+      </p>
+    </Reveal>
   );
 };
 
